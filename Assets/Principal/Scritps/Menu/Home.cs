@@ -7,6 +7,6 @@ public class Home : MonoBehaviour {
 
 
 	public void PlayMenu(){
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex - 1);
+		SceneManager.LoadScene (0);
 	}
 }

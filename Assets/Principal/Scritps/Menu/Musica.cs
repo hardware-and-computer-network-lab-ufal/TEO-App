@@ -9,9 +9,11 @@ public class Musica : MonoBehaviour {
 
 	void Awake(){
 		if (instance == null) {
-			GameObject.DontDestroyOnLoad (this.gameObject);
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+			
 		} else {
-			Destroy (gameObject);
+			Destroy (this.gameObject);
 		}
 
 	}

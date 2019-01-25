@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{D98519A4-A238-985D-99CD-9D6503C2E260}</ProjectGuid>
+    <ProjectGuid>{8A25402A-3B50-AACF-FFDE-C99BE1316447}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -61,24 +61,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Principal\Scritps\Jogos\BotaoClass.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\JogosManager.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Apresenta.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Home.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Menu2.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Musica.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Nuvem.cs" />
-    <Compile Include="Assets\Principal\Scritps\Niveis\Nivel.cs" />
+    <Compile Include="Assets\Principal\Scritps\Niveis\NivelManager.cs" />
     <Compile Include="Assets\Principal\Scritps\Opçoes\ConfigMenu.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teomobc-/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teo/TEO-App/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teomobc-/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teo/TEO-App/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teomobc-/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teo/TEO-App/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teomobc-/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teo/TEO-App/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
