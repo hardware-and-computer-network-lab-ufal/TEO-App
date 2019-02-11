@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class NivelManager : MonoBehaviour {
 
-    public static NivelManager instance;
+    //public static NivelManager instance;
     [SerializeField]
     private GameObject nivelTela;
     private Animator animacao;
@@ -16,15 +16,15 @@ public class NivelManager : MonoBehaviour {
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(this.gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(this.gameObject);
+        //}
 
         if (SceneManager.GetActiveScene().buildIndex == 0) //verificando se esta na cena do menu p nao dar erro em outras cenas
         {
@@ -36,10 +36,7 @@ public class NivelManager : MonoBehaviour {
 
     private void Start()
     {
-        animacao = nivelTela.GetComponent<Animator>();
-
         SceneManager.sceneLoaded += CarregaCena;
-
         nivelTela.SetActive(false);
 
 
@@ -49,6 +46,7 @@ public class NivelManager : MonoBehaviour {
     {
         //componentes da tela de níveis
         nivelTela = GameObject.Find("Niveis");
+        animacao = nivelTela.GetComponent<Animator>();
         facilBtn = GameObject.Find("inicianteBtn").GetComponent<Button>();
         medioBtn = GameObject.Find("intermediarioBtn").GetComponent<Button>();
         dificilBtn = GameObject.Find("avancadoBtn").GetComponent<Button>();
@@ -64,13 +62,13 @@ public class NivelManager : MonoBehaviour {
     public void TelaNivel()
     {
         nivelTela.SetActive(true);
-        animacao = nivelTela.GetComponent<Animator>();
         animacao.Play("tela_nivel");
             
     }
 
     public void Facil()
     {
+        PlayerPrefs.SetInt("nivel",1);
         nivel = 1;
         Voltar();
         nivelTela.SetActive(false);
@@ -79,6 +77,7 @@ public class NivelManager : MonoBehaviour {
 
     public void Medio()
     {
+        PlayerPrefs.SetInt("nivel", 2);
         this.nivel = 2;
         Voltar();
         nivelTela.SetActive(false);
@@ -87,6 +86,7 @@ public class NivelManager : MonoBehaviour {
 
     public void Dificil()
     {
+        PlayerPrefs.SetInt("nivel", 3);
         this.nivel = 3;
         Voltar();
         nivelTela.SetActive(false);
@@ -95,7 +95,6 @@ public class NivelManager : MonoBehaviour {
 
     public void Voltar()
     {
-        animacao = nivelTela.GetComponent<Animator>();
         animacao.Play("tela_nivel_inverse");
     }
 	

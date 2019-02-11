@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Principal/Cenas/SuiteJogos.unity
     guid: b72f09d4a53b54dcbbc9442e59d5c2ba
+  - enabled: 1
+    path: Assets/Principal/Cenas/numeros.unity
+    guid: 5031602805c35984990c4b2be7d9ea2f
   m_configObjects: {}

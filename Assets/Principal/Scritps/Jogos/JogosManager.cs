@@ -24,13 +24,16 @@ public class JogosManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        if (NivelManager.instance.nivel==1)
+        print("Start");
+        int nivel = PlayerPrefs.GetInt("nivel");
+        print(nivel);
+        if (nivel==1)
         {
             InstanciaBotao(iniciante);
-        } else if (NivelManager.instance.nivel == 2)
+        } else if (nivel == 2)
         {
             InstanciaBotao(intermediario);
-        } else if (NivelManager.instance.nivel == 3)
+        } else if (nivel == 3)
         {
             InstanciaBotao(avancado);
         }
@@ -51,15 +54,16 @@ public class JogosManager : MonoBehaviour {
 
             botaoNovo.image.sprite = Resources.Load<Sprite>("Jogos/" + b.nome); //altera a img do botao
 
-            //if (b.nome == "cores") //teste!!!
-            //{
-            //    botaoNovo.onClick.AddListener( //chamando a cena com o nome do jogo
-            //    () => {
-            //        GoJogo(b.nome);
-            //    }
-            //);
-            //}
-            
+            if (b.nome == "numeros") //teste!!!
+            {
+                botaoNovo.onClick.AddListener( //chamando a cena com o nome do jogo
+                () =>
+                {
+                    GoJogo(b.nome);
+                }
+            );
+            }
+
 
         }
     }
