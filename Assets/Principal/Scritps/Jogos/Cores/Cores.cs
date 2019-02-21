@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public class Cores : MonoBehaviour {
 	private Animator parabensAnim;
 
 	private int contagemCores = 0;
+	private int dificuldade = PlayerPrefs.GetInt("nivel");
 
 	private void Awake() {
 		if (SceneManager.GetActiveScene().buildIndex == 3) {
@@ -49,6 +51,31 @@ public class Cores : MonoBehaviour {
 		}
 	}
 
+	public void CarregarCores() {
+		System.Random ordem = new System.Random();
+		List<int> unicos = new List<int>();
+
+		if (dificuldade == 1) {
+			while (unicos.Count != 2){
+				int numero = ordem.Next(1,7);
+				if(!unicos.Contains(numero))
+					unicos.Add(numero);
+			}
+		} else if (dificuldade == 2){
+			while (unicos.Count != 4){
+				int numero = ordem.Next(1,7);
+				if(!unicos.Contains(numero))
+					unicos.Add(numero);
+			}
+		} else {
+			while (unicos.Count != 6){
+				int numero = ordem.Next(1,7);
+				if(!unicos.Contains(numero))
+					unicos.Add(numero);
+			}
+		}
+	}
+
 	public void SalvaPontos(int pontosNovos) {
 		if (PlayerPrefs.HasKey("pontos")) {
 			int pontosAtuais = PlayerPrefs.GetInt("pontos");
@@ -71,6 +98,11 @@ public class Cores : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		CoresCompletas(6);
+		if (dificuldade == 1)
+			CoresCompletas(2);
+		else if (dificuldade == 2)
+			CoresCompletas(4);
+		else
+			CoresCompletas(6);
 	}
 }

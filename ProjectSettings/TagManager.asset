@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: cores
+    uniqueID: 1672658973
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
