@@ -12,7 +12,7 @@ public class Cores : MonoBehaviour {
 	public static GameObject panelParabensFinal;
 	private Animator parabensAnim;
 
-	private int contagemCores = 0;
+	public static int contagemCores = 0;
 	private int dificuldade;
 
 	private void Awake() {
@@ -45,31 +45,26 @@ public class Cores : MonoBehaviour {
 
 	public void CoresCompletas(int coresTotais) {
 		if (coresTotais == contagemCores) {
-			panelParabens.SetActive(true);
-			parabensAnim.Play("panel_parabens");
-			StartCoroutine("VoltaPanelParabens");
+			// panelParabens.SetActive(true);
+			// parabensAnim.Play("panel_parabens");
+			// StartCoroutine("VoltaPanelParabens");
+			print("parabens");
 		}
 	}
-
-	public void CarregarCores() {
-		List<GameObject> circulos = new List<GameObject>();
+	public List<GameObject> GerarCores(string complemento) {
+		List<GameObject> restultado = new List<GameObject>();
 
 		System.Random ordem = new System.Random();
 		Queue<int> unicos = new Queue<int>();
 		Stack<int> escolha = new Stack<int>();
 
 		string[]  coresIndex = new string[7];
-		coresIndex[1] = "COR-AMARELO";
-		coresIndex[2] = "COR-AZUL";
-		coresIndex[3] = "COR-LARANJA";
-		coresIndex[4] = "COR-ROXO";
-		// coresIndex[4] = "ignore";
-		coresIndex[5] = "COR-VERDE";
-		coresIndex[6] = "COR-VERMELHO";
-
-		float xStart = -4.7f;
-		float yNovaLinha = 0f;
-		int countCirculos = 0;
+		coresIndex[1] = "COR-AMARELO" + complemento;
+		coresIndex[2] = "COR-AZUL" + complemento;
+		coresIndex[3] = "COR-LARANJA" + complemento;
+		coresIndex[4] = "COR-ROXO" + complemento;
+		coresIndex[5] = "COR-VERDE" + complemento;
+		coresIndex[6] = "COR-VERMELHO" + complemento;
 		
 		/*
 			1- Amarelo
@@ -103,22 +98,40 @@ public class Cores : MonoBehaviour {
 
 		while (unicos.Count != 0) {
 			int elemento = unicos.Dequeue();
-			circulos.Add(GameObject.Find(coresIndex[elemento]));
+			restultado.Add(GameObject.Find(coresIndex[elemento]));
 		}
 
-		foreach (var item in circulos) {
+		
+		return restultado;
+	}
+	public void CarregarCores() {
+		List<GameObject> circulos = GerarCores("");
+
+		float xStart = -4.7f;
+		float yNovaLinha = 0f;
+		int countCirculos = 0;
+
+		/* Posicionando os círculos aleatórios na tela */
+		foreach (GameObject item in circulos) {
 			if (countCirculos == 3) {
 				yNovaLinha = 2.9f;
 				xStart = -4.7f;
 			}
 			item.transform.position = new Vector3(xStart, (yNovaLinha -2.7f), 0f);
-			// item.transform.Translate(xStart, -2.7f, 0f);
 			xStart +=2.9f;
 			countCirculos++;
-			
-			print(item.transform.position);
 		}
+	}
 
+	public void CoresSeleciona() {
+		List<GameObject> escolha = GerarCores(" (1)");
+		float zChange = 95f;
+
+		foreach (GameObject item in escolha) {
+			item.transform.position = new Vector3(5f, -2.68f, zChange);
+			zChange+=1f;
+			// item.SetActive(false);
+		}
 	}
 
 	public void SalvaPontos(int pontosNovos) {
@@ -141,9 +154,10 @@ public class Cores : MonoBehaviour {
 		// dificuldade = PlayerPrefs.GetInt("nivel");
 		dificuldade = 3;
 		CarregarCores();
+		// StartCoroutine("CoresSeleciona");
+		CoresSeleciona();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (dificuldade == 1)
 			CoresCompletas(2);
