@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Principal/Cenas/numeros.unity
     guid: 5031602805c35984990c4b2be7d9ea2f
+  - enabled: 1
+    path: Assets/Principal/Cenas/quebra-cabeca.unity
+    guid: defb1c364030c5e4b912967dc6c8610d
   m_configObjects: {}

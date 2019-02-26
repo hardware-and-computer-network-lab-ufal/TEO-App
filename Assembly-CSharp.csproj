@@ -67,6 +67,9 @@
     <Compile Include="Assets\Principal\Scritps\Jogos\BotaoClass.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\HomeBtn.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\JogosManager.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\Quebra-Cabeca\Fundo.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\Quebra-Cabeca\Peca.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\Quebra-Cabeca\QuebraCabecaManager.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\Carteira.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\ConferirBtn.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\LapisJogo.cs" />
