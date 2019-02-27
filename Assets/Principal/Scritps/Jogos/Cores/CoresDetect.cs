@@ -7,11 +7,10 @@ public class CoresDetect : MonoBehaviour {
 	
 	void OnCollisionEnter2D (Collision2D obj) {
 		if (obj.gameObject.name == gameObject.name + " (1)") {
-			Destroy(obj.gameObject);
-			Destroy(gameObject);
+			Destroy(obj.gameObject, 0.2f);
+			Destroy(gameObject, 0.2f);
 			Cores.contagemCores++;
-			print(Cores.contagemCores);
-			// StartCoroutine("CorSelecionada");
+			// print(Cores.contagemCores);
 		}
 	}
 }
