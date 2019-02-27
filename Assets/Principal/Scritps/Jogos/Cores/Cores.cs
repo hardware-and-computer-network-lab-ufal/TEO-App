@@ -48,6 +48,9 @@ public class Cores : MonoBehaviour {
 			// panelParabens.SetActive(true);
 			// parabensAnim.Play("panel_parabens");
 			// StartCoroutine("VoltaPanelParabens");
+			panelParabens.SetActive(true);
+            parabensAnim.Play("panel_parabens");
+            StartCoroutine(VoltaPanelParabens());
 			print("parabens");
 		}
 	}
@@ -58,6 +61,10 @@ public class Cores : MonoBehaviour {
 		Queue<int> unicos = new Queue<int>();
 		Stack<int> escolha = new Stack<int>();
 
+		/* O complemento é usado para diferenciar as cores que serão arrastadas das fixas, 
+		   e ainda assim mantendo ambas em ordem aleatória.
+		   complemento == " (1)" representa as cores que serão arrastadas, 
+		   já complemento == "" representa as cores que serão fixas. */
 		string[]  coresIndex = new string[7];
 		coresIndex[1] = "COR-AMARELO" + complemento;
 		coresIndex[2] = "COR-AZUL" + complemento;
@@ -130,7 +137,6 @@ public class Cores : MonoBehaviour {
 		foreach (GameObject item in escolha) {
 			item.transform.position = new Vector3(5f, -2.68f, zChange);
 			zChange+=1f;
-			// item.SetActive(false);
 		}
 	}
 
@@ -151,10 +157,13 @@ public class Cores : MonoBehaviour {
 		return PlayerPrefs.GetInt("pontos");
 	}
 	void Start () {
+		panelParabens = GameObject.Find("panel_parabens");
+		panelParabensFinal = GameObject.Find("panel_parabens_final");
+
+		StartCoroutine(DesligaPanel());
 		// dificuldade = PlayerPrefs.GetInt("nivel");
 		dificuldade = 3;
 		CarregarCores();
-		// StartCoroutine("CoresSeleciona");
 		CoresSeleciona();
 	}
 	
