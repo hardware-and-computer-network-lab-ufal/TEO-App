@@ -51,7 +51,6 @@ public class Cores : MonoBehaviour {
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
             StartCoroutine(VoltaPanelParabens());
-			print("parabens");
 		}
 	}
 	public List<GameObject> GerarCores(string complemento) {
