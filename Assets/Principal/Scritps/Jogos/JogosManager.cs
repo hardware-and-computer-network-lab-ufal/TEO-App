@@ -54,7 +54,7 @@ public class JogosManager : MonoBehaviour {
 
             botaoNovo.image.sprite = Resources.Load<Sprite>("Jogos/" + b.nome); //altera a img do botao
 
-            if (b.nome == "numeros") //teste!!!
+            if (b.nome == "numeros" || b.nome == "cores") //teste!!!
             {
                 botaoNovo.onClick.AddListener( //chamando a cena com o nome do jogo
                 () =>

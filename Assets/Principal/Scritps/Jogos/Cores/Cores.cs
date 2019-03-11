@@ -16,10 +16,11 @@ public class Cores : MonoBehaviour {
 	private int dificuldade;
 
 	private void Awake() {
-		if (SceneManager.GetActiveScene().buildIndex == 2) {
+		if (SceneManager.GetActiveScene().buildIndex == 3) {
 			if ( instance == null)
 				instance = this;
 		}
+		contagemCores = 0;
 	}
 
 	IEnumerator DesligaPanel () {
@@ -160,8 +161,8 @@ public class Cores : MonoBehaviour {
 		panelParabensFinal = GameObject.Find("panel_parabens_final");
 
 		StartCoroutine(DesligaPanel());
-		// dificuldade = PlayerPrefs.GetInt("nivel");
-		dificuldade = 3;
+		dificuldade = PlayerPrefs.GetInt("nivel");
+		
 		CarregarCores();
 		CoresSeleciona();
 	}
