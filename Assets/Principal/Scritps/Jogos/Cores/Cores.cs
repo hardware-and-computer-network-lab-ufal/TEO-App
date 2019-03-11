@@ -16,7 +16,7 @@ public class Cores : MonoBehaviour {
 	private int dificuldade;
 
 	private void Awake() {
-		if (SceneManager.GetActiveScene().buildIndex == 3) {
+		if (SceneManager.GetActiveScene().buildIndex == 4) {
 			if ( instance == null)
 				instance = this;
 		}
