@@ -13,6 +13,8 @@ public class Cores : MonoBehaviour {
 	private Animator parabensAnim;
 
 	public static int contagemCores = 0;
+	// public List<GameObject> circulos;
+	private Queue<int> unicos = new Queue<int>();
 	private int dificuldade;
 
 	private void Awake() {
@@ -54,12 +56,40 @@ public class Cores : MonoBehaviour {
             StartCoroutine(VoltaPanelParabens());
 		}
 	}
+	public void sortearCores(){
+		
+		System.Random ordem = new System.Random();
+
+		/* Condicional responsável por sortear as cores que irão aparecer */
+		if (dificuldade == 1) {
+			while (unicos.Count != 2){
+				int numero = ordem.Next(1,7);
+				if(!unicos.Contains(numero))
+					unicos.Enqueue(numero);
+			}
+		} else if (dificuldade == 2){
+			while (unicos.Count != 4){
+				int numero = ordem.Next(1,7);
+				if(!unicos.Contains(numero))
+					unicos.Enqueue(numero);
+			}
+		} else {
+			while (unicos.Count != 6){
+				int numero = ordem.Next(1,7);
+				if(!unicos.Contains(numero))
+					unicos.Enqueue(numero);
+			}
+		}
+	}
 	public List<GameObject> GerarCores(string complemento) {
 		List<GameObject> restultado = new List<GameObject>();
+		Queue<int> coresEscolhidas = new Queue<int>();
+		foreach (int item in unicos) {
+			coresEscolhidas.Enqueue(item);
+		}
 
-		System.Random ordem = new System.Random();
-		Queue<int> unicos = new Queue<int>();
-		Stack<int> escolha = new Stack<int>();
+		
+		// Stack<int> escolha = new Stack<int>();
 
 		/* O complemento é usado para diferenciar as cores que serão arrastadas das fixas, 
 		   e ainda assim mantendo ambas em ordem aleatória.
@@ -82,29 +112,8 @@ public class Cores : MonoBehaviour {
 			6- Vermelho
 		 */
 
-		/* Condicional responsável por sortear as cores que irão aparecer */
-		if (dificuldade == 1) {
-			while (unicos.Count != 2){
-				int numero = ordem.Next(1,7);
-				if(!unicos.Contains(numero))
-					unicos.Enqueue(numero);
-			}
-		} else if (dificuldade == 2){
-			while (unicos.Count != 4){
-				int numero = ordem.Next(1,7);
-				if(!unicos.Contains(numero))
-					unicos.Enqueue(numero);
-			}
-		} else {
-			while (unicos.Count != 6){
-				int numero = ordem.Next(1,7);
-				if(!unicos.Contains(numero))
-					unicos.Enqueue(numero);
-			}
-		}
-
-		while (unicos.Count != 0) {
-			int elemento = unicos.Dequeue();
+		while (coresEscolhidas.Count != 0) {
+			int elemento = coresEscolhidas.Dequeue();
 			restultado.Add(GameObject.Find(coresIndex[elemento]));
 		}
 
@@ -128,10 +137,14 @@ public class Cores : MonoBehaviour {
 			xStart +=2.9f;
 			countCirculos++;
 		}
+
 	}
 
 	public void CoresSeleciona() {
 		List<GameObject> escolha = GerarCores(" (1)");
+		// foreach (GameObject item in circulos) {
+		// 	escolha.Add(item);
+		// }
 		float zChange = 95f;
 
 		foreach (GameObject item in escolha) {
@@ -163,6 +176,7 @@ public class Cores : MonoBehaviour {
 		StartCoroutine(DesligaPanel());
 		dificuldade = PlayerPrefs.GetInt("nivel");
 		
+		sortearCores();
 		CarregarCores();
 		CoresSeleciona();
 	}

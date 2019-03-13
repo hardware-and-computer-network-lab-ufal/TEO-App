@@ -1466,7 +1466,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1224171325}
+      objectReference: {fileID: 1224171327}
     - target: {fileID: 114997032943835906, guid: 839ac0fe7e803334c8722f69c71fc9e5,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1626,11 +1626,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224671449030634294, guid: 7417a2306fcaeef42b19ff879be3f730,
     type: 2}
   m_PrefabInternal: {fileID: 60895147}
---- !u!1 &1048965298 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1114768520159198, guid: 50d3690d3a98c5f4abfd9d0223cb8f7c,
-    type: 2}
-  m_PrefabInternal: {fileID: 980760537}
 --- !u!224 &1048965299 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224282052880122526, guid: 50d3690d3a98c5f4abfd9d0223cb8f7c,
@@ -1908,7 +1903,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1224171326}
-  - component: {fileID: 1224171325}
   - component: {fileID: 1224171327}
   m_Layer: 0
   m_Name: CoresManager
@@ -1917,22 +1911,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1224171325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1224171324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f5e59b1f64bca49b19c0edc32dff29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contagem: 0
-  panelParabens: {fileID: 1048965298}
-  panelParabensFinal: {fileID: 1527706748}
-  numerosObjUnid: {fileID: 0}
-  numerosObjDez: {fileID: 0}
 --- !u!4 &1224171326
 Transform:
   m_ObjectHideFlags: 0
@@ -2287,11 +2265,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.39
---- !u!1 &1527706748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1190338832945366, guid: 839ac0fe7e803334c8722f69c71fc9e5,
-    type: 2}
-  m_PrefabInternal: {fileID: 768503803}
 --- !u!224 &1527706749 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224563942077903362, guid: 839ac0fe7e803334c8722f69c71fc9e5,
