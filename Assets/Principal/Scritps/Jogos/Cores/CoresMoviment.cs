@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CoresMoviment : MonoBehaviour {
 
-	private Vector3 position;
+	private Vector3 position, positionAux;
 	private Vector3 offset;
 
 	void OnMouseDown() {
 		position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+		positionAux = transform.position;
 	}
 
 	void OnMouseDrag() {
@@ -18,6 +19,6 @@ public class CoresMoviment : MonoBehaviour {
 	}
 
 	void OnMouseUp() {
-		position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+		transform.position = positionAux;
 	}
 }
