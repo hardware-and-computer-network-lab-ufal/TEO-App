@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 247147604}
   - component: {fileID: 247147605}
   - component: {fileID: 247147606}
+  - component: {fileID: 247147607}
   m_Layer: 0
   m_Name: COR-VERDE
   m_TagString: Untagged
@@ -573,6 +574,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &247147607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 247147601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a96e47c94ee48ddac57a88e277ff4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &353484585
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +597,7 @@ GameObject:
   - component: {fileID: 353484588}
   - component: {fileID: 353484589}
   - component: {fileID: 353484590}
+  - component: {fileID: 353484591}
   m_Layer: 0
   m_Name: COR-AZUL
   m_TagString: Untagged
@@ -697,6 +710,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &353484591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 353484585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a96e47c94ee48ddac57a88e277ff4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &382411094
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +733,7 @@ GameObject:
   - component: {fileID: 382411097}
   - component: {fileID: 382411098}
   - component: {fileID: 382411099}
+  - component: {fileID: 382411100}
   m_Layer: 0
   m_Name: COR-LARANJA
   m_TagString: Untagged
@@ -821,6 +846,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &382411100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 382411094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a96e47c94ee48ddac57a88e277ff4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &408004651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2086,7 @@ GameObject:
   - component: {fileID: 1485141450}
   - component: {fileID: 1485141451}
   - component: {fileID: 1485141452}
+  - component: {fileID: 1485141453}
   m_Layer: 0
   m_Name: COR-AMARELO
   m_TagString: Untagged
@@ -2162,6 +2199,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1485141453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1485141447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a96e47c94ee48ddac57a88e277ff4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1495257720
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,6 +2330,7 @@ GameObject:
   - component: {fileID: 1695763329}
   - component: {fileID: 1695763330}
   - component: {fileID: 1695763331}
+  - component: {fileID: 1695763332}
   m_Layer: 0
   m_Name: COR-VERMELHO
   m_TagString: Untagged
@@ -2394,6 +2443,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1695763332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695763326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a96e47c94ee48ddac57a88e277ff4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2052293648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2406,6 +2466,7 @@ GameObject:
   - component: {fileID: 2052293651}
   - component: {fileID: 2052293652}
   - component: {fileID: 2052293653}
+  - component: {fileID: 2052293654}
   m_Layer: 0
   m_Name: COR-ROXO
   m_TagString: Untagged
@@ -2518,6 +2579,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &2052293654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2052293648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a96e47c94ee48ddac57a88e277ff4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2133612944
 GameObject:
   m_ObjectHideFlags: 0

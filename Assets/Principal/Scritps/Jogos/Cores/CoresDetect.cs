@@ -12,7 +12,9 @@ public class CoresDetect : MonoBehaviour {
 			Destroy(obj.gameObject, 0.2f);
 			Destroy(gameObject, 0.2f);
 			Cores.contagemCores++;
-			// print(Cores.contagemCores);
+			
+			obj.gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
+			gameObject.GetComponent<Renderer>().material.SetColor("_Color", Color.gray);
 		}
 	}
 }
