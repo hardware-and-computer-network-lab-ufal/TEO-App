@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NumerosQuadroMoviment : MonoBehaviour {
+	private Vector3 position, positionAux;
+	private Vector3 offset;
 
-	// Use this for initialization
-	void Start () {
-		
+	void OnMouseDown() {
+		position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+		positionAux = transform.position;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void OnMouseDrag() {
+		Vector3 cordAtual = new Vector3(Input.mousePosition.x, Input.mousePosition.y, position.z);
+		Vector3 posAtual = Camera.main.ScreenToWorldPoint(cordAtual);
+		transform.position = posAtual;
+	}
+
+	void OnMouseUp() {
+		transform.position = positionAux;
 	}
 }

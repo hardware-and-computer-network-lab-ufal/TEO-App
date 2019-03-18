@@ -12,6 +12,8 @@ public class NumerosQuadro : MonoBehaviour {
 	public static GameObject panelParabensFinal;
 	private Animator parabensAnim;
 
+	public GameObject numeroObjUm,numeroObjDois;
+
 	public static int contagemTotal = 0;
 	// public List<GameObject> circulos;
 	private Queue<int> unicos = new Queue<int>();
@@ -48,40 +50,30 @@ public class NumerosQuadro : MonoBehaviour {
 
 	public void SomaCompleta(int coresTotais) {
 		if (coresTotais == contagemTotal) {
-			// panelParabens.SetActive(true);
-			// parabensAnim.Play("panel_parabens");
-			// StartCoroutine("VoltaPanelParabens");
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
             StartCoroutine(VoltaPanelParabens());
 		}
 	}
-	public void sortearCores(){
-		
-		System.Random ordem = new System.Random();
+	public void sortearSoma() {
+		numeroObjUm = GameObject.Find("numeroObjUm");
+		numeroObjDois = GameObject.Find("numeroObjDois");
 
-		/* Condicional responsável por sortear as cores que irão aparecer */
-		if (dificuldade == 1) {
-			while (unicos.Count != 2){
-				int numero = ordem.Next(1,7);
-				if(!unicos.Contains(numero))
-					unicos.Enqueue(numero);
-			}
-		} else if (dificuldade == 2){
-			while (unicos.Count != 4){
-				int numero = ordem.Next(1,7);
-				if(!unicos.Contains(numero))
-					unicos.Enqueue(numero);
-			}
-		} else {
-			while (unicos.Count != 6){
-				int numero = ordem.Next(1,7);
-				if(!unicos.Contains(numero))
-					unicos.Enqueue(numero);
-			}
-		}
+		int numeroSorteadoUm = 10;
+        int numeroSorteadoDois = 10;
+		do {
+			numeroSorteadoUm = Random.Range(0,10);
+			numeroSorteadoDois = Random.Range(0,10);
+		} while (numeroSorteadoUm + numeroSorteadoDois > 10);
+
+        print(string.Format("Numeros: {0} {1}", numeroSorteadoUm, numeroSorteadoDois));
+
+        string strNumUm = numeroSorteadoUm.ToString();
+        string strNumDois = numeroSorteadoDois.ToString();
+
+        numeroObjUm.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/numeros/" + strNumUm);
+        numeroObjDois.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/numeros/" + strNumDois); 
 	}
-
 	public void SalvaPontos(int pontosNovos) {
 		if (PlayerPrefs.HasKey("pontos")) {
 			int pontosAtuais = PlayerPrefs.GetInt("pontos");
@@ -105,15 +97,15 @@ public class NumerosQuadro : MonoBehaviour {
 		StartCoroutine(DesligaPanel());
 		dificuldade = PlayerPrefs.GetInt("nivel");
 		
-		sortearCores();
+		sortearSoma();
 	}
 	
 	void Update () {
-		if (dificuldade == 1)
-			print("D: 1");
-		else if (dificuldade == 2)
-			print("D: 2");
-		else
-			print("D: 3");
+		// if (dificuldade == 1)
+		// 	print("D: 1");
+		// else if (dificuldade == 2)
+		// 	print("D: 2");
+		// else
+		// 	print("D: 3");
 	}
 }

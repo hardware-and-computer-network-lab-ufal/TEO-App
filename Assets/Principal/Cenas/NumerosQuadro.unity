@@ -243,12 +243,12 @@ Prefab:
     - target: {fileID: 224671449030634294, guid: 7417a2306fcaeef42b19ff879be3f730,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 3.7
+      value: 3.6999817
       objectReference: {fileID: 0}
     - target: {fileID: 224671449030634294, guid: 7417a2306fcaeef42b19ff879be3f730,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000013113
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224671449030634294, guid: 7417a2306fcaeef42b19ff879be3f730,
         type: 2}
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 275481257}
   - component: {fileID: 275481256}
   m_Layer: 0
-  m_Name: "quadro-n\xFAmero"
+  m_Name: numeroObjUm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 729697293}
   - component: {fileID: 729697292}
   m_Layer: 0
-  m_Name: "quadro-n\xFAmero (1)"
+  m_Name: numeroObjDois
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -907,7 +907,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1224171327}
+      objectReference: {fileID: 1224171325}
     - target: {fileID: 114997032943835906, guid: 839ac0fe7e803334c8722f69c71fc9e5,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1419,7 +1419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1224171326}
-  - component: {fileID: 1224171327}
+  - component: {fileID: 1224171325}
   m_Layer: 0
   m_Name: NumerosQuadroManager
   m_TagString: Untagged
@@ -1427,6 +1427,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1224171325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1224171324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10d503aceb284eb88a66039971c7b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numeroObjUm: {fileID: 0}
+  numeroObjDois: {fileID: 0}
 --- !u!4 &1224171326
 Transform:
   m_ObjectHideFlags: 0
@@ -1440,17 +1453,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1224171327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1224171324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f08c80838d064641ab848fe6ea60960, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1527706749 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224563942077903362, guid: 839ac0fe7e803334c8722f69c71fc9e5,

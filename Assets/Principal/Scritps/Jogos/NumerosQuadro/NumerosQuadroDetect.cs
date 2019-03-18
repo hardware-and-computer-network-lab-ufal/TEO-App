@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class NumerosQuadroDetect : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	void OnCollisionEnter2D (Collision2D obj) {
+		if (obj.gameObject.name == gameObject.name + " (1)") {
+			// Destroy(obj.gameObject, 0.2f);
+			// Destroy(gameObject, 0.2f);
+			
+		}
 	}
 }
