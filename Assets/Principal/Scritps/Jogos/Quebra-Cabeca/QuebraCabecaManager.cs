@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class QuebraCabecaManager : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class QuebraCabecaManager : MonoBehaviour {
     public GameObject panelEstatisticas;
     private int contador_pecas; //Vai contar quantas pecas ja foram colocadas no lugar
     private Animator parabensAnim;
+    public GameObject fundo;
 
     private void Awake()
     {
@@ -21,6 +23,21 @@ public class QuebraCabecaManager : MonoBehaviour {
 
     void Start () {
         StartCoroutine(DesligaPanel());
+
+        if (PlayerPrefs.GetInt("nivel") == 3)
+        {
+            //print(fundo.gameObject.GetComponentsInChildren<SpriteRenderer>());
+            //for(int i = 0; i < 4; i++)
+            //{
+            //    print(fundo.gameObject.GetComponentsInChildren<SpriteRenderer>()[i]);
+            //}
+            for (int i=0;i<4;i++)
+            {
+                Sprite img = Resources.Load<Sprite>("Jogos/quebracabeca/pecas_brancas/"+(i+1)+"_4");
+                fundo.gameObject.GetComponentsInChildren<Image>()[i].sprite = img;
+            }
+        }
+
     }
 	
 	// Update is called once per frame

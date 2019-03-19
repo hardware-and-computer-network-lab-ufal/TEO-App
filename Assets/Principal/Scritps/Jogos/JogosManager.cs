@@ -24,9 +24,7 @@ public class JogosManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        print("Start");
         int nivel = PlayerPrefs.GetInt("nivel");
-        print(nivel);
         if (nivel==1)
         {
             InstanciaBotao(iniciante);

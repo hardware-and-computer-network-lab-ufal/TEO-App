@@ -16,15 +16,6 @@ public class NivelManager : MonoBehaviour {
 
     private void Awake()
     {
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //    DontDestroyOnLoad(this.gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(this.gameObject);
-        //}
 
         if (SceneManager.GetActiveScene().buildIndex == 0) //verificando se esta na cena do menu p nao dar erro em outras cenas
         {

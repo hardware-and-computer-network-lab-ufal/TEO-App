@@ -444,6 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iniciante:
   - nome: cores
+  - nome: quebra-cabeca
   intermediario:
   - nome: numeros
   - nome: memoria
