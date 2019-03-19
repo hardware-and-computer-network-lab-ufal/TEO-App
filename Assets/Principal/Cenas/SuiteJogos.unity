@@ -448,6 +448,7 @@ MonoBehaviour:
   intermediario:
   - nome: numeros
   - nome: memoria
+  - nome: cores
   avancado:
   - nome: ondeEsta
   - nome: quebra-cabeca
