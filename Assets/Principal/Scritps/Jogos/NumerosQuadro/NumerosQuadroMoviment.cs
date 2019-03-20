@@ -18,6 +18,11 @@ public class NumerosQuadroMoviment : MonoBehaviour {
 	}
 
 	void OnMouseUp() {
-		transform.position = positionAux;
+		// transform.position = positionAux;
+		NumerosQuadro.criarNovaFruta = true;
+	}
+
+	void OnCollisionEnter2D (Collision2D obj) {
+		Destroy(GetComponent("NumerosQuadroMoviment"), 1f);
 	}
 }
