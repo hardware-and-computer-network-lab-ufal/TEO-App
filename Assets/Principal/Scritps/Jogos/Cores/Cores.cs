@@ -1,9 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
+using System.Collections.Generic;
 
 public class Cores : MonoBehaviour {
 
@@ -142,13 +144,20 @@ public class Cores : MonoBehaviour {
 
 	public void CoresSeleciona() {
 		List<GameObject> escolha = GerarCores(" (1)");
-		// foreach (GameObject item in circulos) {
-		// 	escolha.Add(item);
-		// }
+		Queue<int> novosUnicos = new Queue<int>();
+		System.Random novaOrdemMundial = new System.Random();
+		int numero;
+
+		while (novosUnicos.Count < escolha.Count) {
+			numero = novaOrdemMundial.Next(escolha.Count);
+			if (!novosUnicos.Contains(numero)) {
+				novosUnicos.Enqueue(numero);
+			}
+		}
 		float zChange = 95f;
 
-		foreach (GameObject item in escolha) {
-			item.transform.position = new Vector3(5f, -2.68f, zChange);
+		foreach (int item in novosUnicos) {
+			escolha[item].transform.position = new Vector3(5f, -2.68f, zChange);
 			zChange+=1f;
 		}
 	}
