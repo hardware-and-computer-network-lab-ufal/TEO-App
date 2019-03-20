@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using System.IO;
+
 public class NumerosQuadro : MonoBehaviour {
 
 	public static NumerosQuadro instance;
@@ -71,8 +73,14 @@ public class NumerosQuadro : MonoBehaviour {
         string strNumUm = numeroSorteadoUm.ToString();
         string strNumDois = numeroSorteadoDois.ToString();
 
-        numeroObjUm.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/numeros/" + strNumUm);
-        numeroObjDois.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/numeros/" + strNumDois); 
+		// numeroObjUm.GetComponent<SpriteRenderer>().sprite = Sprite.Create(Resources.Load("Jogos/NumerosQuadro/numeros/1") as Texture2D);
+		numeroObjUm.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/numeros/1") as Texture2D;
+		// numeroObjUm.GetComponent<Renderer>().sortingOrder = 999;
+		print(Resources.Load("Jogos/NumerosQuadro/numeros/1") as Object);
+
+		// Instantiate(numeroObjUm);
+		// Instantiate(numeroObjDois);
+		
 	}
 	public void SalvaPontos(int pontosNovos) {
 		if (PlayerPrefs.HasKey("pontos")) {
