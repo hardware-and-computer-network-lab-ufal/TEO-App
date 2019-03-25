@@ -642,7 +642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &494519303
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numeroObjUm: {fileID: 1164278236}
   numeroObjDois: {fileID: 2092195334}
-  fruta: {fileID: 1312154016}
+  fruta: {fileID: 0}
 --- !u!4 &1224171326
 Transform:
   m_ObjectHideFlags: 0

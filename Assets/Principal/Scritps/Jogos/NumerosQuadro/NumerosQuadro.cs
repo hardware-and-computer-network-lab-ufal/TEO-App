@@ -16,10 +16,9 @@ public class NumerosQuadro : MonoBehaviour {
 
 	public static bool criarNovaFruta = true;
 
-	public GameObject numeroObjUm,numeroObjDois, fruta;
+	public GameObject numeroObjUm,numeroObjDois;
+	public GameObject fruta;
 	private int numeroSorteadoUm, numeroSorteadoDois = 10;
-
-	public static int contagemTotal = 0;
 
 	private Queue<int> unicos = new Queue<int>();
 	private int dificuldade;
@@ -29,7 +28,6 @@ public class NumerosQuadro : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
-		contagemTotal = 0;
 	}
 
 	IEnumerator DesligaPanel () {
@@ -54,10 +52,12 @@ public class NumerosQuadro : MonoBehaviour {
 	}
 
 	public void SomaCompleta() {
-		if (numeroSorteadoUm + numeroSorteadoDois == contagemTotal) {
+		if ((numeroSorteadoUm + numeroSorteadoDois) == PegarPontos()) {
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
             StartCoroutine(VoltaPanelParabens());
+		} else {
+			print("Não foi dessa vez");
 		}
 	}
 	public void sortearSoma() {
@@ -95,8 +95,6 @@ public class NumerosQuadro : MonoBehaviour {
 	}
 
 	public void criarFruta() {
-		if (criarNovaFruta == false)
-			return;
 		/*
 			1- Laranja
 			2- Maca
@@ -110,23 +108,22 @@ public class NumerosQuadro : MonoBehaviour {
 		frutas[3] = "Uva";
 		System.Random ran = new System.Random();
 		int deliciaFrutosa = ran.Next(4);
-		fruta.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]) as Texture2D;
-		print(fruta.GetComponent<RawImage>().texture);
-		if (fruta.GetComponent<RawImage>().texture != null) {
-			criarNovaFruta = false;
-			return;
-		}
+		GameObject InFruta = Instantiate(fruta);
+		
+		
+		// fruta.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]) as Texture2D;
+		// // print(fruta.GetComponent<RawImage>().texture);
+		// if (fruta.GetComponent<RawImage>().texture != null) {
+		// 	return;
+		// }
 			
-
-		GameObject InFruta = Instantiate(fruta) as GameObject;
 		InFruta.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]) as Texture2D;
-
-
-
-		criarNovaFruta = false;
+		print(InFruta.GetComponent<RawImage>().texture);
 	}
 
 	void Start () {
+		PlayerPrefs.DeleteKey("pontos");
+		fruta = GameObject.Find("fruta");
 		panelParabens = GameObject.Find("panel_parabens");
 		panelParabensFinal = GameObject.Find("panel_parabens_final");
 		
@@ -135,10 +132,9 @@ public class NumerosQuadro : MonoBehaviour {
 		dificuldade = PlayerPrefs.GetInt("nivel");
 
 		sortearSoma();
+		criarFruta();
 	}
 	
 	void Update () {
-		criarFruta();
-		SomaCompleta();
 	}
 }
