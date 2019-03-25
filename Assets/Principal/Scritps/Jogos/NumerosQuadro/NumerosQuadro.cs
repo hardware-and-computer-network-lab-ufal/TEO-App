@@ -18,6 +18,7 @@ public class NumerosQuadro : MonoBehaviour {
 
 	public GameObject numeroObjUm,numeroObjDois;
 	public GameObject fruta;
+	private Vector3 posInicial;
 	private int numeroSorteadoUm, numeroSorteadoDois = 10;
 
 	private Queue<int> unicos = new Queue<int>();
@@ -61,8 +62,8 @@ public class NumerosQuadro : MonoBehaviour {
 		}
 	}
 	public void sortearSoma() {
-		// numeroObjUm = GameObject.Find("numeroObjUm");
-		// numeroObjDois = GameObject.Find("numeroObjDois");
+		numeroObjUm = GameObject.Find("numeroObjUm");
+		numeroObjDois = GameObject.Find("numeroObjDois");
 
 		do {
 			numeroSorteadoUm = Random.Range(0,10);
@@ -108,17 +109,13 @@ public class NumerosQuadro : MonoBehaviour {
 		frutas[3] = "Uva";
 		System.Random ran = new System.Random();
 		int deliciaFrutosa = ran.Next(4);
-		GameObject InFruta = Instantiate(fruta);
+		GameObject InFruta = Instantiate(fruta, posInicial, fruta.transform.rotation);
 		
-		
-		// fruta.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]) as Texture2D;
-		// // print(fruta.GetComponent<RawImage>().texture);
-		// if (fruta.GetComponent<RawImage>().texture != null) {
-		// 	return;
-		// }
 			
-		InFruta.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]) as Texture2D;
-		print(InFruta.GetComponent<RawImage>().texture);
+		InFruta.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]);
+		// Infruta.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]);
+		// InFruta.transform.position = new Vector3(InFruta.transform.position.x, InFruta.transform.position.y, (InFruta.transform.position.z + 1f));
+
 	}
 
 	void Start () {
@@ -132,7 +129,9 @@ public class NumerosQuadro : MonoBehaviour {
 		dificuldade = PlayerPrefs.GetInt("nivel");
 
 		sortearSoma();
-		criarFruta();
+		fruta.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/" + "Morango");
+		posInicial = new Vector3(fruta.transform.position.x, fruta.transform.position.y, fruta.transform.position.z);
+		// fruta.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/" + "Morango") as Texture2D;
 	}
 	
 	void Update () {
