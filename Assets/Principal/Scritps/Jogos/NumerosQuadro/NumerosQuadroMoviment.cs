@@ -19,7 +19,6 @@ public class NumerosQuadroMoviment : MonoBehaviour {
 
 	void OnMouseUp() {
 		// transform.position = positionAux;
-		NumerosQuadro.criarNovaFruta = true;
-		NumerosQuadro.instance.criarFruta();
+		
 	}
 }

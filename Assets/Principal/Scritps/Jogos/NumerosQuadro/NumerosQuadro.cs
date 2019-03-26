@@ -23,12 +23,15 @@ public class NumerosQuadro : MonoBehaviour {
 
 	private Queue<int> unicos = new Queue<int>();
 	private int dificuldade;
+	public static int somaTotal = 0;
 
 	private void Awake() {
 		if (SceneManager.GetActiveScene().buildIndex == 5) {
 			if ( instance == null)
 				instance = this;
 		}
+		sortearSoma();
+		somaTotal = 0;
 	}
 
 	IEnumerator DesligaPanel () {
@@ -53,27 +56,38 @@ public class NumerosQuadro : MonoBehaviour {
 	}
 
 	public void SomaCompleta() {
-		if ((numeroSorteadoUm + numeroSorteadoDois) == PegarPontos()) {
+		if ((numeroSorteadoUm + numeroSorteadoDois) == somaTotal) {
+			print("Ganhei, total:");
+			print(somaTotal);
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
             StartCoroutine(VoltaPanelParabens());
 		} else {
-			print("Não foi dessa vez");
+			print((numeroSorteadoUm + numeroSorteadoDois));
+			// print(numeroSorteadoUm);
+			// print(numeroSorteadoDois);
+			// print("Não foi dessa vez");
 		}
 	}
 	public void sortearSoma() {
 		numeroObjUm = GameObject.Find("numeroObjUm");
 		numeroObjDois = GameObject.Find("numeroObjDois");
 
-		do {
-			numeroSorteadoUm = Random.Range(0,10);
-			numeroSorteadoDois = Random.Range(0,10);
-		} while (numeroSorteadoUm + numeroSorteadoDois > 10);
+		numeroSorteadoUm = numeroSorteadoDois = 10;
 
-        print(string.Format("Numeros: {0} {1}", numeroSorteadoUm, numeroSorteadoDois));
+		while((numeroSorteadoUm + numeroSorteadoDois) > 10) {
+			int tmpUm = Random.Range(0,10);
+			int tmpDois = Random.Range(0,10);
+			if((tmpUm + tmpDois) <= 10) {
+				numeroSorteadoUm = tmpUm;
+				numeroSorteadoDois = tmpDois;
+			}
+		}
 
         string strNumUm = numeroSorteadoUm.ToString();
+		print(strNumUm);
         string strNumDois = numeroSorteadoDois.ToString();
+		print(strNumDois);
 
 		numeroObjUm.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/numeros/" + strNumUm) as Texture2D;
 		numeroObjDois.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/numeros/" + strNumDois) as Texture2D;
@@ -113,13 +127,9 @@ public class NumerosQuadro : MonoBehaviour {
 		
 			
 		InFruta.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]);
-		// Infruta.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/" + frutas[deliciaFrutosa]);
-		// InFruta.transform.position = new Vector3(InFruta.transform.position.x, InFruta.transform.position.y, (InFruta.transform.position.z + 1f));
-
 	}
 
 	void Start () {
-		PlayerPrefs.DeleteKey("pontos");
 		fruta = GameObject.Find("fruta");
 		panelParabens = GameObject.Find("panel_parabens");
 		panelParabensFinal = GameObject.Find("panel_parabens_final");
@@ -128,10 +138,9 @@ public class NumerosQuadro : MonoBehaviour {
 		StartCoroutine(DesligaPanel());
 		dificuldade = PlayerPrefs.GetInt("nivel");
 
-		sortearSoma();
-		fruta.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Jogos/NumerosQuadro/" + "Morango");
 		posInicial = new Vector3(fruta.transform.position.x, fruta.transform.position.y, fruta.transform.position.z);
-		// fruta.GetComponent<RawImage>().texture = Resources.Load("Jogos/NumerosQuadro/" + "Morango") as Texture2D;
+		criarFruta();
+		fruta.transform.position = new Vector3(10.27f, -10.81f, 0);
 	}
 	
 	void Update () {
