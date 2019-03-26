@@ -65,6 +65,9 @@
     <Compile Include="Assets\AnimacaoNum.cs" />
     <Compile Include="Assets\Lapis.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\BotaoClass.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\Cores\Cores.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\Cores\CoresDetect.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\Cores\CoresMoviment.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\HomeBtn.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\JogosManager.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\Quebra-Cabeca\Fundo.cs" />
@@ -82,7 +85,6 @@
     <Compile Include="Assets\Principal\Scritps\Menu\Musica.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Nuvem.cs" />
     <Compile Include="Assets\Principal\Scritps\Niveis\NivelManager.cs" />
-    <Compile Include="Assets\Principal\Scritps\Opçoes\ConfigMenu.cs" />
     <Compile Include="Assets\teste.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teo/TEO-App/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
