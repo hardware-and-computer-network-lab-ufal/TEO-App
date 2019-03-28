@@ -1496,12 +1496,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1097109838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10d503aceb284eb88a66039971c7b91, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a54b57920af9454ab657e890b30f7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numeroObjUm: {fileID: 0}
-  numeroObjDois: {fileID: 0}
-  fruta: {fileID: 0}
 --- !u!114 &1097109841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1813,9 +1810,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f10d503aceb284eb88a66039971c7b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelParabens: {fileID: 0}
+  panelParabensFinal: {fileID: 0}
+  parabensAnim: {fileID: 0}
   numeroObjUm: {fileID: 1164278236}
   numeroObjDois: {fileID: 2092195334}
   fruta: {fileID: 0}
+  numeroSorteadoUm: 0
+  numeroSorteadoDois: 0
+  somaTotal: 0
 --- !u!4 &1224171326
 Transform:
   m_ObjectHideFlags: 0
