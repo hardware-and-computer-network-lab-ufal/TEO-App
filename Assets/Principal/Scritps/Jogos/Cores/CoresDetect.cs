@@ -7,7 +7,12 @@ public class CoresDetect : MonoBehaviour {
 	public static CoresDetect instance;
 	private Collision2D atualColisao;
 	private Color atual, fixa;
+
+	public AudioSource som;
 	void OnCollisionEnter2D (Collision2D obj) {
+		som = Cores.instance.GetComponent<AudioSource>();
+		AudioClip efeito = Resources.Load<AudioClip>("Som/Posicionou");
+		som.PlayOneShot(efeito);
 		if (obj.gameObject.name == gameObject.name + " (1)"){
 			Cores.instance.destroyCircle = 1;
 			atual = obj.gameObject.GetComponent<Renderer>().material.GetColor("_Color");
