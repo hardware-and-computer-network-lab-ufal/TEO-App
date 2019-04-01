@@ -19,6 +19,13 @@ public class Cores : MonoBehaviour {
 	private Queue<int> unicos = new Queue<int>();
 	private int dificuldade;
 
+	/* Os valores de destroyCircle podem ser 0, 1, 2:
+		Caso 0: Objeto não está colidindo, nem deve ser destruído
+		Caso 1: Objeto colidiu
+		Caso 2: Objeto está colidindo e deve ser destruído
+	 */
+	public int destroyCircle = 0;
+
 	private void Awake() {
 		if (SceneManager.GetActiveScene().buildIndex == 4) {
 			if ( instance == null)
