@@ -14,6 +14,8 @@ public class Cores : MonoBehaviour {
 	public GameObject panelParabensFinal;
 	private Animator parabensAnim;
 
+	public AudioSource som;
+	private AudioClip efeito;
 	public int contagemCores = 0;
 
 	private Queue<int> unicos = new Queue<int>();
@@ -57,6 +59,11 @@ public class Cores : MonoBehaviour {
 
 	public void CoresCompletas(int coresTotais) {
 		if (coresTotais == contagemCores) {
+			som = GetComponent<AudioSource>();
+			som.Stop();
+			efeito = Resources.Load<AudioClip>("Som/Parabens");
+			som.PlayOneShot(efeito);
+			contagemCores++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
             StartCoroutine(VoltaPanelParabens());
