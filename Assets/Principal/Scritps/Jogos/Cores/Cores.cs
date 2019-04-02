@@ -1,21 +1,32 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+using System.Collections.Generic;
+
 public class Cores : MonoBehaviour {
 
 	public static Cores instance;
-	public static GameObject panelParabens;
-	public static GameObject panelParabensFinal;
+	public GameObject panelParabens;
+	public GameObject panelParabensFinal;
 	private Animator parabensAnim;
 
-	public static int contagemCores = 0;
-	// public List<GameObject> circulos;
+	public AudioSource som;
+	private AudioClip efeito;
+	public int contagemCores = 0;
+
 	private Queue<int> unicos = new Queue<int>();
 	private int dificuldade;
+
+	/* Os valores de destroyCircle podem ser 0, 1, 2:
+		Caso 0: Objeto não está colidindo, nem deve ser destruído
+		Caso 1: Objeto colidiu
+		Caso 2: Objeto está colidindo e deve ser destruído
+	 */
+	public int destroyCircle = 0;
 
 	private void Awake() {
 		if (SceneManager.GetActiveScene().buildIndex == 4) {
@@ -48,9 +59,11 @@ public class Cores : MonoBehaviour {
 
 	public void CoresCompletas(int coresTotais) {
 		if (coresTotais == contagemCores) {
-			// panelParabens.SetActive(true);
-			// parabensAnim.Play("panel_parabens");
-			// StartCoroutine("VoltaPanelParabens");
+			som = GetComponent<AudioSource>();
+			som.Stop();
+			efeito = Resources.Load<AudioClip>("Som/Parabens");
+			som.PlayOneShot(efeito);
+			contagemCores++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
             StartCoroutine(VoltaPanelParabens());
@@ -87,9 +100,6 @@ public class Cores : MonoBehaviour {
 		foreach (int item in unicos) {
 			coresEscolhidas.Enqueue(item);
 		}
-
-		
-		// Stack<int> escolha = new Stack<int>();
 
 		/* O complemento é usado para diferenciar as cores que serão arrastadas das fixas, 
 		   e ainda assim mantendo ambas em ordem aleatória.
@@ -142,33 +152,24 @@ public class Cores : MonoBehaviour {
 
 	public void CoresSeleciona() {
 		List<GameObject> escolha = GerarCores(" (1)");
-		// foreach (GameObject item in circulos) {
-		// 	escolha.Add(item);
-		// }
+		Queue<int> novosUnicos = new Queue<int>();
+		System.Random novaOrdemMundial = new System.Random();
+		int numero;
+
+		while (novosUnicos.Count < escolha.Count) {
+			numero = novaOrdemMundial.Next(escolha.Count);
+			if (!novosUnicos.Contains(numero)) {
+				novosUnicos.Enqueue(numero);
+			}
+		}
 		float zChange = 95f;
 
-		foreach (GameObject item in escolha) {
-			item.transform.position = new Vector3(5f, -2.68f, zChange);
+		foreach (int item in novosUnicos) {
+			escolha[item].transform.position = new Vector3(5f, -2.68f, zChange);
 			zChange+=1f;
 		}
 	}
 
-	public void SalvaPontos(int pontosNovos) {
-		if (PlayerPrefs.HasKey("pontos")) {
-			int pontosAtuais = PlayerPrefs.GetInt("pontos");
-			PlayerPrefs.SetInt("pontos", (pontosAtuais + pontosNovos));
-		} else {
-			PlayerPrefs.SetInt("pontos", pontosNovos);
-		}
-	}
-
-	public void TiraPontos(int pontos) {
-		SalvaPontos(-pontos);
-	}
-
-	public int PegarPontos() {
-		return PlayerPrefs.GetInt("pontos");
-	}
 	void Start () {
 		panelParabens = GameObject.Find("panel_parabens");
 		panelParabensFinal = GameObject.Find("panel_parabens_final");
