@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoresMoviment : MonoBehaviour {
-
-	private Vector3 position, positionAux;
-	private Vector3 offset;
+	public AudioSource som;
+	private AudioClip efeito;
+	private Vector3 position;
+	private Vector3 offset, positionDefault;
 
 	void OnMouseDown() {
 		position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-		positionAux = transform.position;
+		positionDefault = transform.position;
 	}
 
 	void OnMouseDrag() {
@@ -19,6 +20,14 @@ public class CoresMoviment : MonoBehaviour {
 	}
 
 	void OnMouseUp() {
-		transform.position = positionAux;
+		if (Cores.instance.destroyCircle == 0) {
+			transform.position = positionDefault;
+			som = Cores.instance.GetComponent<AudioSource>();
+			som.Stop();
+			efeito = Resources.Load<AudioClip>("Som/Errou");
+			som.PlayOneShot(efeito);
+		} else if(Cores.instance.destroyCircle == 1) {
+			Cores.instance.destroyCircle = 2;
+		}
 	}
 }
