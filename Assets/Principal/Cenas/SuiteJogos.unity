@@ -445,6 +445,7 @@ MonoBehaviour:
   iniciante:
   - nome: cores
   - nome: quebra-cabeca
+  - nome: NumerosQuadro
   intermediario:
   - nome: numeros
   - nome: memoria

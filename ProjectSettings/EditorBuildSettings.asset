@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Principal/Cenas/OndeEsta.unity
     guid: 37e785a0887c746a1a3a48d591ca2318
+  - enabled: 1
+    path: Assets/Principal/Cenas/NumerosQuadro.unity
+    guid: 12af478ab649f42e482e3d347601dba6
   m_configObjects: {}
