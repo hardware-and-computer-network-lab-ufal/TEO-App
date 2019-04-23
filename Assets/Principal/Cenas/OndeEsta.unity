@@ -254,7 +254,7 @@ GameObject:
   - component: {fileID: 129800300}
   - component: {fileID: 129800302}
   m_Layer: 0
-  m_Name: olho1
+  m_Name: olho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 340155033}
   - component: {fileID: 340155035}
   m_Layer: 0
-  m_Name: olho2
+  m_Name: olho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1521,7 +1521,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   som: {fileID: 0}
-  other: {fileID: 0}
 --- !u!1 &1315663618
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class OndeEstaDetect : MonoBehaviour {
 		controller = Input.GetMouseButtonDown(0);
 		if (controller == true) {
 			if (OndeEsta.questao == 0) {
-				detectClicked("olho1");
+				detectClicked("olho");
 			} else if (OndeEsta.questao == 1) {
 				detectClicked("nariz");
 			} else if (OndeEsta.questao == 2) {
