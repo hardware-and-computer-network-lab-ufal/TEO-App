@@ -26,7 +26,7 @@ public class NumerosQuadro : MonoBehaviour {
 	public int somaTotal = 0;
 
 	private void Awake() {
-		if (SceneManager.GetActiveScene().buildIndex == 5) {
+		if (SceneManager.GetActiveScene().buildIndex == 7) {
 			if ( instance == null)
 				instance = this;
 		}
