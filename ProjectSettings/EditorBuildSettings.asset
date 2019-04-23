@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/Principal/Cenas/cores.unity
     guid: 4a022afd0034046ef8ffd6b59a257a21
   - enabled: 1
+    path: Assets/Principal/Cenas/AVD.unity
+    guid: 13d519d7c49dac148878d5d6263e10e5
+  - enabled: 1
+    path: Assets/Principal/Cenas/OndeEsta.unity
+    guid: 37e785a0887c746a1a3a48d591ca2318
+  - enabled: 1
     path: Assets/Principal/Cenas/NumerosQuadro.unity
     guid: 12af478ab649f42e482e3d347601dba6
   m_configObjects: {}

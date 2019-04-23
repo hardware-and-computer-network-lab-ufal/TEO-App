@@ -455,7 +455,7 @@ MonoBehaviour:
   - nome: quebra-cabeca
   - nome: cores
   - nome: memoria
-  - nome: ondeEsta
+  - nome: OndeEsta
   prateleira: {fileID: 155973546}
   botao: {fileID: 1974200443300512, guid: 4f9285160523c9a419722bac264b2978, type: 2}
 --- !u!4 &365575022
