@@ -78,7 +78,7 @@ public class OndeEsta : MonoBehaviour {
 		System.Random part = new System.Random();
 
 		while (bodyParts.Count < totalOndeEsta) {
-			int choosenOne = part.Next(totalOndeEsta);
+			int choosenOne = part.Next(3);
 			if (!bodyParts.Contains(choosenOne))
 				bodyParts.Enqueue(choosenOne);
 		}
