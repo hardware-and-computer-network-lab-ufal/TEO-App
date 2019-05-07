@@ -446,10 +446,12 @@ MonoBehaviour:
   - nome: cores
   - nome: quebra-cabeca
   - nome: NumerosQuadro
+  - nome: OndeEsta
   intermediario:
   - nome: numeros
   - nome: memoria
   - nome: cores
+  - nome: OndeEsta
   avancado:
   - nome: ondeEsta
   - nome: quebra-cabeca
