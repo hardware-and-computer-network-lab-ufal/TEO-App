@@ -30,6 +30,9 @@ public class NumerosQuadro : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
+		panelParabensFinal = GameObject.Find("panel_parabens_final");
+		panelParabensFinal.SetActive(false);
+		
 		sortearSoma();
 		somaTotal = 0;
 	}
@@ -38,16 +41,16 @@ public class NumerosQuadro : MonoBehaviour {
 		yield return new WaitForSeconds(0.001f);
 		parabensAnim = panelParabens.GetComponent<Animator>();
 		panelParabens.SetActive(false);
-		panelParabensFinal.SetActive(false);
+		
 
 	}
 
 	public IEnumerator VoltaPanelParabens() {
 		yield return new WaitForSeconds(5);
-		parabensAnim.Play("painel_parabens_reverse");
+		parabensAnim.Play("panel_parabens_reverse");
 		yield return new WaitForSeconds(1);
 		panelParabensFinal.SetActive(true);
-		panelParabens.SetActive(true);
+		panelParabens.SetActive(false);
 	}
 
 	public void JogarNovamente() {
@@ -100,7 +103,7 @@ public class NumerosQuadro : MonoBehaviour {
 	void Start () {
 		fruta = GameObject.Find("fruta");
 		panelParabens = GameObject.Find("panel_parabens");
-		panelParabensFinal = GameObject.Find("panel_parabens_final");
+		
 		
 
 		StartCoroutine(DesligaPanel());

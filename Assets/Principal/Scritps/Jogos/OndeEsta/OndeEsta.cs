@@ -25,6 +25,8 @@ public class OndeEsta : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
+		panelParabensFinal = GameObject.Find("panel_parabens_final");
+		panelParabensFinal.SetActive(false);
 		contagemOndeEsta = 0;
 
 		totalOndeEsta = PlayerPrefs.GetInt("nivel", 3);
@@ -36,16 +38,15 @@ public class OndeEsta : MonoBehaviour {
 		yield return new WaitForSeconds(0.001f);
 		parabensAnim = panelParabens.GetComponent<Animator>();
 		panelParabens.SetActive(false);
-		panelParabensFinal.SetActive(false);
 
 	}
 
 	IEnumerator VoltaPanelParabens() {
 		yield return new WaitForSeconds(5);
-		parabensAnim.Play("painel_parabens_reverse");
+		parabensAnim.Play("panel_parabens_reverse");
 		yield return new WaitForSeconds(1);
 		panelParabensFinal.SetActive(true);
-		panelParabens.SetActive(true);
+		panelParabens.SetActive(false);
 	}
 
 	public void JogarNovamente() {
@@ -63,7 +64,7 @@ public class OndeEsta : MonoBehaviour {
 			contagemOndeEsta++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
-            StartCoroutine(VoltaPanelParabens());
+            StartCoroutine("VoltaPanelParabens");
 		}
 	}
 	public void randomChild() {
@@ -108,7 +109,6 @@ public class OndeEsta : MonoBehaviour {
 
 	void Start () {
 		panelParabens = GameObject.Find("panel_parabens");
-		panelParabensFinal = GameObject.Find("panel_parabens_final");
 
 		StartCoroutine("DesligaPanel");
 	}
