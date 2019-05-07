@@ -660,7 +660,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &552146988
 GameObject:
@@ -848,7 +848,7 @@ Prefab:
       objectReference: {fileID: 984958546}
     - target: {fileID: 1190338832945366, guid: 839ac0fe7e803334c8722f69c71fc9e5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114997032943835906, guid: 839ac0fe7e803334c8722f69c71fc9e5,
         type: 2}
@@ -1591,8 +1591,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1315663618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -1.4, z: 0.006887979}
-  m_LocalScale: {x: 0.3, y: 0.111521915, z: 0.2}
+  m_LocalPosition: {x: -0.03, y: -1.491, z: 0.006887979}
+  m_LocalScale: {x: 0.3, y: 0.14219044, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
