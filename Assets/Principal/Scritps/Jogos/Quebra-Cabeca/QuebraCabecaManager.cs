@@ -9,8 +9,9 @@ public class QuebraCabecaManager : MonoBehaviour {
     public static QuebraCabecaManager instance;
     public GameObject panelParabens;
     public GameObject panelEstatisticas;
+    public GameObject popup_voltar;
     private int contador_pecas; //Vai contar quantas pecas ja foram colocadas no lugar
-    private Animator parabensAnim;
+    private Animator parabensAnim,popup_voltar_anim;
     public GameObject fundo;
 
     private void Awake()
@@ -49,7 +50,9 @@ public class QuebraCabecaManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.001f);
         parabensAnim = panelParabens.GetComponent<Animator>();
+        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
         panelParabens.SetActive(false);
+        popup_voltar.SetActive(false);
         panelEstatisticas.SetActive(false);
     }
 
@@ -77,5 +80,11 @@ public class QuebraCabecaManager : MonoBehaviour {
             parabensAnim.Play("panel_parabens");
             StartCoroutine(VoltaPanelParabens());
         }
+    }
+
+    public void VoltarPopup()
+    {
+        popup_voltar.SetActive(true);
+        popup_voltar_anim.Play("popup_voltar");
     }
 }

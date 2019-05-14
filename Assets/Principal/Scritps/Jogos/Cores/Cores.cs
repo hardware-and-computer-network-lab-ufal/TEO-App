@@ -12,7 +12,8 @@ public class Cores : MonoBehaviour {
 	public static Cores instance;
 	public GameObject panelParabens;
 	public GameObject panelParabensFinal;
-	private Animator parabensAnim;
+    public GameObject popup_voltar;
+    private Animator parabensAnim, popup_voltar_anim;
 
 	public AudioSource som;
 	private AudioClip efeito;
@@ -39,7 +40,9 @@ public class Cores : MonoBehaviour {
 	IEnumerator DesligaPanel () {
 		yield return new WaitForSeconds(0.001f);
 		parabensAnim = panelParabens.GetComponent<Animator>();
-		panelParabens.SetActive(false);
+        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
+        popup_voltar.SetActive(false);
+        panelParabens.SetActive(false);
 		panelParabensFinal.SetActive(false);
 
 	}
@@ -173,6 +176,7 @@ public class Cores : MonoBehaviour {
 	void Start () {
 		panelParabens = GameObject.Find("panel_parabens");
 		panelParabensFinal = GameObject.Find("panel_parabens_final");
+        popup_voltar = GameObject.Find("popup_voltar");
 
 		StartCoroutine(DesligaPanel());
 		dificuldade = PlayerPrefs.GetInt("nivel");
@@ -190,4 +194,10 @@ public class Cores : MonoBehaviour {
 		else
 			CoresCompletas(6);
 	}
+
+    public void VoltarPopup()
+    {
+        popup_voltar.SetActive(true);
+        popup_voltar_anim.Play("popup_voltar");
+    }
 }

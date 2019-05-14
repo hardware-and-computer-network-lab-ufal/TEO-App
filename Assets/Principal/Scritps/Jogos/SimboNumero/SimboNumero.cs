@@ -13,8 +13,9 @@ public class SimboNumero : MonoBehaviour {
     private int contagem;
     public GameObject panelParabens;
     public GameObject panelParabensFinal;
-    private Animator parabensAnim;
-    
+    public GameObject popup_voltar;
+    private Animator parabensAnim, popup_voltar_anim;
+
 
     public GameObject numerosObjUnid,numerosObjDez;
     private Image numObj;
@@ -55,6 +56,8 @@ public class SimboNumero : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.001f);
         parabensAnim = panelParabens.GetComponent<Animator>();
+        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
+        popup_voltar.SetActive(false);
         panelParabens.SetActive(false);
         panelParabensFinal.SetActive(false);
     }
@@ -110,5 +113,11 @@ public class SimboNumero : MonoBehaviour {
     public int PegaPontos()
     {
         return PlayerPrefs.GetInt("pontos");
+    }
+
+    public void VoltarPopup()
+    {
+        popup_voltar.SetActive(true);
+        popup_voltar_anim.Play("popup_voltar");
     }
 }
