@@ -84,6 +84,8 @@
     <Compile Include="Assets\Principal\Scritps\Menu\Menu2.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Musica.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Nuvem.cs" />
+    <Compile Include="Assets\Principal\Scritps\Menu\SliderEfeitos.cs" />
+    <Compile Include="Assets\Principal\Scritps\Menu\SliderMusica.cs" />
     <Compile Include="Assets\Principal\Scritps\Niveis\NivelManager.cs" />
     <Compile Include="Assets\teste.cs" />
     <Reference Include="UnityEditor.StandardEvents">

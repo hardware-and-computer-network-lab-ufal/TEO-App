@@ -20,13 +20,17 @@ public class Fundo : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D outro)
     {
-        if (outro.gameObject.CompareTag("peca") && outro.gameObject.name==this.gameObject.name)
+        if (outro.gameObject.CompareTag("peca") && outro.gameObject.name==this.gameObject.name) //se a peca for colocada no canto certo
         {
-            print(outro.name);
-            print(outro.GetComponent<SpriteRenderer>());
+            Musica.instance.OnRight();
             imgFundo.sprite =  outro.gameObject.GetComponent<SpriteRenderer>().sprite;
             QuebraCabecaManager.instance.ContaPecas();
             Destroy(outro.gameObject);
+        } else if(outro.gameObject.name != this.gameObject.name && !outro.gameObject.name.Contains("p"))
+        {
+            Musica.instance.OnFail();
         }
     }
+
+    
 }

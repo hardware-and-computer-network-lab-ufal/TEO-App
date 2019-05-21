@@ -78,8 +78,9 @@ public class QuebraCabecaManager : MonoBehaviour {
         {
             panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
+            Musica.instance.OnCongrats();
             StartCoroutine(VoltaPanelParabens());
-        }
+        } 
     }
 
     public void PausePopup()

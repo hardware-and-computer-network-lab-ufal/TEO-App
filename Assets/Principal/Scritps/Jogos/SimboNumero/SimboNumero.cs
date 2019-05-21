@@ -83,10 +83,12 @@ public class SimboNumero : MonoBehaviour {
         {
             panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
+            Musica.instance.OnCongrats();
             StartCoroutine(VoltaPanelParabens());
         }
         else
         {
+            Musica.instance.OnFail();
             print("Ops, não foi dessa vez");
         }
     }
