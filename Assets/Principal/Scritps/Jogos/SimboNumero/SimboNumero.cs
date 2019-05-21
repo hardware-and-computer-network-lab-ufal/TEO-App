@@ -115,9 +115,14 @@ public class SimboNumero : MonoBehaviour {
         return PlayerPrefs.GetInt("pontos");
     }
 
-    public void VoltarPopup()
+    public void PausePopup()
     {
         popup_voltar.SetActive(true);
         popup_voltar_anim.Play("popup_voltar");
+    }
+
+    public void Continue()
+    {
+        popup_voltar_anim.Play("popup_voltar_inverse");
     }
 }

@@ -82,9 +82,16 @@ public class QuebraCabecaManager : MonoBehaviour {
         }
     }
 
-    public void VoltarPopup()
+    public void PausePopup()
     {
         popup_voltar.SetActive(true);
         popup_voltar_anim.Play("popup_voltar");
+        //Time.timeScale = 0; //forma de pausar os objetos do jogo
+    }
+
+    public void Continue()
+    {
+        //Time.timeScale = 1; //despausar jogo
+        popup_voltar_anim.Play("popup_voltar_inverse");
     }
 }
