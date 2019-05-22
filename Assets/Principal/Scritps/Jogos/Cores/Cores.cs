@@ -34,25 +34,27 @@ public class Cores : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
+		panelParabensFinal = GameObject.Find("panel_parabens_final");
+		panelParabensFinal.SetActive(false);
 		contagemCores = 0;
 	}
 
 	IEnumerator DesligaPanel () {
 		yield return new WaitForSeconds(0.001f);
 		parabensAnim = panelParabens.GetComponent<Animator>();
+
         popup_voltar_anim = popup_voltar.GetComponent<Animator>();
         popup_voltar.SetActive(false);
         panelParabens.SetActive(false);
 		panelParabensFinal.SetActive(false);
-
 	}
 
 	IEnumerator VoltaPanelParabens() {
 		yield return new WaitForSeconds(5);
-		parabensAnim.Play("painel_parabens_reverse");
+		parabensAnim.Play("panel_parabens_reverse");
 		yield return new WaitForSeconds(1);
 		panelParabensFinal.SetActive(true);
-		panelParabens.SetActive(true);
+		panelParabens.SetActive(false);
 	}
 
 	public void JogarNovamente() {
