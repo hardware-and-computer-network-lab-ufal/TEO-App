@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OndeEstaDetect : MonoBehaviour {
-
-	public AudioSource som;
-	private AudioClip efeito;
 	bool controller;
 
 	public void detectClicked(string parte) {
@@ -16,18 +13,12 @@ public class OndeEstaDetect : MonoBehaviour {
 		hit = Physics2D.Raycast(locationMouse, Vector2.zero);
 
 		if (hit.collider != null && hit.transform.gameObject.name == parte) {
-			som = GetComponent<AudioSource>();
-			som.Stop();
-			efeito = Resources.Load<AudioClip>("Som/Acertou");
-			som.PlayOneShot(efeito);
+			Musica.instance.OnRight();
 			OndeEsta.contagemOndeEsta++;
 			OndeEsta.changeQuestion = true;
 			
 		} else if (hit.collider != null && hit.transform.gameObject.name != parte) {
-			som = GetComponent<AudioSource>();
-			som.Stop();
-			efeito = Resources.Load<AudioClip>("Som/Errou");
-			som.PlayOneShot(efeito);
+			Musica.instance.OnFail();
 		}
 
 	}

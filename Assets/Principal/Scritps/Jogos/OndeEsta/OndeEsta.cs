@@ -9,10 +9,9 @@ public class OndeEsta : MonoBehaviour {
 	public OndeEsta instance;
 	public GameObject panelParabens;
 	public GameObject panelParabensFinal;
-	private Animator parabensAnim;
+	public GameObject popup_voltar;
+    private Animator parabensAnim, popup_voltar_anim;
 
-	public AudioSource som;
-	private AudioClip efeito;
 	public static int contagemOndeEsta = 0;
 	public static int totalOndeEsta; // Quantidade de perguntas, definidas pela dificuldade
 	 public static int questao;
@@ -37,8 +36,11 @@ public class OndeEsta : MonoBehaviour {
 	IEnumerator DesligaPanel () {
 		yield return new WaitForSeconds(0.001f);
 		parabensAnim = panelParabens.GetComponent<Animator>();
-		panelParabens.SetActive(false);
 
+        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
+        popup_voltar.SetActive(false);
+        panelParabens.SetActive(false);
+		panelParabensFinal.SetActive(false);
 	}
 
 	IEnumerator VoltaPanelParabens() {
@@ -56,10 +58,7 @@ public class OndeEsta : MonoBehaviour {
 
 	public void OndeEstaCompleto() {
 		if (totalOndeEsta == contagemOndeEsta) {
-			som = GetComponent<AudioSource>();
-			som.Stop();
-			efeito = Resources.Load<AudioClip>("Som/Parabens");
-			som.PlayOneShot(efeito);
+			Musica.instance.OnCongrats();
 			
 			contagemOndeEsta++;
 			panelParabens.SetActive(true);
@@ -101,14 +100,9 @@ public class OndeEsta : MonoBehaviour {
 		}
 	}
 
-	public void playSound(AudioClip efeito) {
-		som = GetComponent<AudioSource>();
-		som.Stop();
-		som.PlayOneShot(efeito);
-	}
-
 	void Start () {
 		panelParabens = GameObject.Find("panel_parabens");
+		popup_voltar = GameObject.Find("popup_voltar");
 
 		StartCoroutine("DesligaPanel");
 	}
@@ -117,4 +111,15 @@ public class OndeEsta : MonoBehaviour {
 		questions();
 		OndeEstaCompleto();
 	}
+
+	public void PausePopup()
+    {
+        popup_voltar.SetActive(true);
+        popup_voltar_anim.Play("popup_voltar");
+    }
+
+    public void Continue()
+    {
+        popup_voltar_anim.Play("popup_voltar_inverse");
+    }
 }
