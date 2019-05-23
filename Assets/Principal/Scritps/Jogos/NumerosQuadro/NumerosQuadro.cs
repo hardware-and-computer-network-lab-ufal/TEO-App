@@ -12,7 +12,9 @@ public class NumerosQuadro : MonoBehaviour {
 	public static NumerosQuadro instance;
 	public GameObject panelParabens;
 	public GameObject panelParabensFinal;
-	public Animator parabensAnim;
+	public GameObject popup_voltar;
+    public Animator parabensAnim;
+	private Animator popup_voltar_anim;
 
 	public static bool criarNovaFruta = true;
 
@@ -21,8 +23,6 @@ public class NumerosQuadro : MonoBehaviour {
 	private Vector3 posInicial;
 	public int numeroSorteadoUm, numeroSorteadoDois;
 
-	private Queue<int> unicos = new Queue<int>();
-	private int dificuldade;
 	public int somaTotal = 0;
 
 	private void Awake() {
@@ -40,9 +40,11 @@ public class NumerosQuadro : MonoBehaviour {
 	IEnumerator DesligaPanel () {
 		yield return new WaitForSeconds(0.001f);
 		parabensAnim = panelParabens.GetComponent<Animator>();
-		panelParabens.SetActive(false);
-		
 
+        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
+        popup_voltar.SetActive(false);
+        panelParabens.SetActive(false);
+		panelParabensFinal.SetActive(false);
 	}
 
 	public IEnumerator VoltaPanelParabens() {
@@ -103,14 +105,24 @@ public class NumerosQuadro : MonoBehaviour {
 	void Start () {
 		fruta = GameObject.Find("fruta");
 		panelParabens = GameObject.Find("panel_parabens");
-		
+		popup_voltar = GameObject.Find("popup_voltar");
 		
 
 		StartCoroutine(DesligaPanel());
-		dificuldade = PlayerPrefs.GetInt("nivel");
 
 		posInicial = new Vector3(fruta.transform.position.x, fruta.transform.position.y, fruta.transform.position.z);
 		criarFruta();
 		fruta.transform.position = new Vector3(10.27f, -10.81f, 0);
 	}
+
+	public void PausePopup()
+    {
+        popup_voltar.SetActive(true);
+        popup_voltar_anim.Play("popup_voltar");
+    }
+
+    public void Continue()
+    {
+        popup_voltar_anim.Play("popup_voltar_inverse");
+    }
 }
