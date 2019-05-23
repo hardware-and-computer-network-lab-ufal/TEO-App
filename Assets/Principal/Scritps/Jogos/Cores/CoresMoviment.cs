@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CoresMoviment : MonoBehaviour {
-	public AudioSource som;
-	private AudioClip efeito;
 	private Vector3 position;
 	private Vector3 offset, positionDefault;
 
@@ -22,10 +20,7 @@ public class CoresMoviment : MonoBehaviour {
 	void OnMouseUp() {
 		if (Cores.instance.destroyCircle == 0) {
 			transform.position = positionDefault;
-			som = Cores.instance.GetComponent<AudioSource>();
-			som.Stop();
-			efeito = Resources.Load<AudioClip>("Som/Errou");
-			som.PlayOneShot(efeito);
+			Musica.instance.OnFail();
 		} else if(Cores.instance.destroyCircle == 1) {
 			Cores.instance.destroyCircle = 2;
 		}
