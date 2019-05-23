@@ -7,10 +7,9 @@ public class Memoria : MonoBehaviour {
 	public static Memoria instance = null;
 	public GameObject panelParabens;
 	public GameObject panelParabensFinal;
-	private Animator parabensAnim;
+	public GameObject popup_voltar;
+    private Animator parabensAnim, popup_voltar_anim;
 
-	public AudioSource som;
-	private AudioClip efeito;
 	public int contagemCards = 0;
 
 	private int dificuldade;
@@ -34,9 +33,11 @@ public class Memoria : MonoBehaviour {
 	IEnumerator DesligaPanel () {
 		yield return new WaitForSeconds(0.001f);
 		parabensAnim = panelParabens.GetComponent<Animator>();
-		panelParabens.SetActive(false);
-	
 
+        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
+        popup_voltar.SetActive(false);
+        panelParabens.SetActive(false);
+		panelParabensFinal.SetActive(false);
 	}
 
 	IEnumerator VoltaPanelParabens() {
@@ -178,6 +179,7 @@ public class Memoria : MonoBehaviour {
 
 		if (vitoria == true) {
 			vitoria = false;
+			Musica.instance.OnCongrats();
 			contagemCards++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
@@ -190,11 +192,23 @@ public class Memoria : MonoBehaviour {
 		posicionarCardsDeEscolha();
 
 		panelParabens = GameObject.Find("panel_parabens");
+		popup_voltar = GameObject.Find("popup_voltar");
 		StartCoroutine(DesligaPanel());
 	}
 
 	void Update() {
 		faseCompleta();
 	}
+
+	public void PausePopup()
+    {
+        popup_voltar.SetActive(true);
+        popup_voltar_anim.Play("popup_voltar");
+    }
+
+    public void Continue()
+    {
+        popup_voltar_anim.Play("popup_voltar_inverse");
+    }
 
 }
