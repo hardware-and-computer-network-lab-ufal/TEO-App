@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class OndeEsta : MonoBehaviour {
 
-	public OndeEsta instance;
+	public static OndeEsta instance;
 	public GameObject panelParabens;
 	public GameObject panelParabensFinal;
 	public GameObject popup_voltar;
     private Animator parabensAnim, popup_voltar_anim;
 
-	public static int contagemOndeEsta = 0;
-	public static int totalOndeEsta; // Quantidade de perguntas, definidas pela dificuldade
-	 public static int questao;
-	public static bool changeQuestion = true;
+	public int contagemOndeEsta = 0;
+	public int totalOndeEsta; // Quantidade de perguntas, definidas pela dificuldade
+	 public int questao;
+	public bool changeQuestion = true;
 
 	private Queue<int> bodyParts = new Queue<int>(3);
 
@@ -29,8 +29,7 @@ public class OndeEsta : MonoBehaviour {
 		contagemOndeEsta = 0;
 
 		totalOndeEsta = PlayerPrefs.GetInt("nivel", 3);
-		randomChild();
-		randomParts();
+		
 	}
 
 	IEnumerator DesligaPanel () {
@@ -103,6 +102,8 @@ public class OndeEsta : MonoBehaviour {
 	void Start () {
 		panelParabens = GameObject.Find("panel_parabens");
 		popup_voltar = GameObject.Find("popup_voltar");
+		randomChild();
+		randomParts();
 
 		StartCoroutine("DesligaPanel");
 	}

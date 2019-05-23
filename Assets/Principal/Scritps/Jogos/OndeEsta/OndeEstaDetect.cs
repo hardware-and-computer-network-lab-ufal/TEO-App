@@ -14,8 +14,8 @@ public class OndeEstaDetect : MonoBehaviour {
 
 		if (hit.collider != null && hit.transform.gameObject.name == parte) {
 			Musica.instance.OnRight();
-			OndeEsta.contagemOndeEsta++;
-			OndeEsta.changeQuestion = true;
+			OndeEsta.instance.contagemOndeEsta++;
+			OndeEsta.instance.changeQuestion = true;
 			
 		} else if (hit.collider != null && hit.transform.gameObject.name != parte) {
 			Musica.instance.OnFail();
@@ -25,11 +25,11 @@ public class OndeEstaDetect : MonoBehaviour {
 	void Update() {
 		controller = Input.GetMouseButtonDown(0);
 		if (controller == true) {
-			if (OndeEsta.questao == 0) {
+			if (OndeEsta.instance.questao == 0) {
 				detectClicked("olho");
-			} else if (OndeEsta.questao == 1) {
+			} else if (OndeEsta.instance.questao == 1) {
 				detectClicked("nariz");
-			} else if (OndeEsta.questao == 2) {
+			} else if (OndeEsta.instance.questao == 2) {
 				detectClicked("boca");
 			}
 		}
