@@ -25,9 +25,10 @@ public class Memoria : MonoBehaviour {
 		}
 		panelParabensFinal = GameObject.Find("panel_parabens_final");
 		panelParabensFinal.SetActive(false);
+		dificuldade = PlayerPrefs.GetInt("nivel", 3);
+		posicionarCardsDeEscolha();
 	
 		contagemCards = 0;
-		dificuldade = PlayerPrefs.GetInt("nivel", 3);
 	}
 
 	IEnumerator DesligaPanel () {
@@ -113,8 +114,9 @@ public class Memoria : MonoBehaviour {
 		}
 		return final;
 	}
-	public void posicionarCards() {
+	public List<GameObject> posicionarCards() {
 		List<GameObject> cards = selecionarSequencia("");
+		List<GameObject> cardsEsc = new List<GameObject>();
 
 		float xStart = -5f;
 		float yNovaLinha = 0f;
@@ -122,6 +124,7 @@ public class Memoria : MonoBehaviour {
 
 		/* Posicionando os círculos aleatórios na tela */
 		foreach (GameObject item in cards) {
+			cardsEsc.Add(GameObject.Find(item.name+" (1)"));
 			if (countCards == 4) {
 				if (dificuldade == 2) {
 					yNovaLinha = 3f;
@@ -137,18 +140,31 @@ public class Memoria : MonoBehaviour {
 		}
 
 		StartCoroutine(memorize(cards));
+
+		return cardsEsc;
 	}
 
 	public void posicionarCardsDeEscolha() {
-		List<GameObject> escolha = selecionarSequencia(" (1)");
-		float zChange = 95f;
-		int ordem = 10;
+		List<GameObject> escolha = posicionarCards();
+		Queue<int> novosUnicos = new Queue<int>();
+		System.Random novaOrdemMundial = new System.Random();
+		int numero;
 
-		foreach (GameObject item in escolha) {
-			item.transform.position = new Vector3(5f, -2.4f, zChange);
+		while (novosUnicos.Count < escolha.Count) {
+			numero = novaOrdemMundial.Next(escolha.Count);
+			if (!novosUnicos.Contains(numero)) {
+				novosUnicos.Enqueue(numero);
+			}
+		}
+		
+		float zChange = 95f;
+		int ordem = 10; // altera o sorting layer order para cada card
+
+		foreach (int indice in novosUnicos) {
+			escolha[indice].transform.position = new Vector3(5f, -2.4f, zChange);
 			zChange+=1f;
-			item.GetComponent<SpriteRenderer>().sortingOrder = ordem++;
-			cartasMemorizar.Push(item);
+			escolha[indice].GetComponent<SpriteRenderer>().sortingOrder = ordem++;
+			cartasMemorizar.Push(escolha[indice]);
 		}
 		escolha = null;
 	}
@@ -188,9 +204,6 @@ public class Memoria : MonoBehaviour {
 	}
 
 	void Start() {
-		posicionarCards();
-		posicionarCardsDeEscolha();
-
 		panelParabens = GameObject.Find("panel_parabens");
 		popup_voltar = GameObject.Find("popup_voltar");
 		StartCoroutine(DesligaPanel());
