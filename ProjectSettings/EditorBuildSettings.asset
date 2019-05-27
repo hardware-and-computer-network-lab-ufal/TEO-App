@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Principal/Cenas/NumerosQuadro.unity
     guid: 12af478ab649f42e482e3d347601dba6
+  - enabled: 1
+    path: Assets/Principal/Cenas/Memoria.unity
+    guid: e71f6f42c373d45ec8ee23571e7a0083
   m_configObjects: {}
