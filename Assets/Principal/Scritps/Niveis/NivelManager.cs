@@ -8,8 +8,8 @@ public class NivelManager : MonoBehaviour {
 
     //public static NivelManager instance;
     [SerializeField]
-    private GameObject nivelTela;
-    private Animator animacao;
+    private GameObject nivelTela,loginTela;
+    private Animator animacao,loginAnim;
     public int nivel;
     [SerializeField]private Button playBtn;
     [SerializeField] private Button facilBtn,medioBtn,dificilBtn; //botoes nivel
@@ -37,7 +37,9 @@ public class NivelManager : MonoBehaviour {
     {
         //componentes da tela de níveis
         nivelTela = GameObject.Find("Niveis");
+        loginTela = GameObject.Find("Login");
         animacao = nivelTela.GetComponent<Animator>();
+        loginAnim = loginTela.gameObject.GetComponent<Animator>();
         facilBtn = GameObject.Find("inicianteBtn").GetComponent<Button>();
         medioBtn = GameObject.Find("intermediarioBtn").GetComponent<Button>();
         dificilBtn = GameObject.Find("avancadoBtn").GetComponent<Button>();
@@ -47,14 +49,36 @@ public class NivelManager : MonoBehaviour {
 
         //Botao play
         playBtn = GameObject.Find("PlayButton").GetComponent<Button>();
-        playBtn.onClick.AddListener(() => { TelaNivel(); });
+        playBtn.onClick.AddListener(() => { TelaLogin(); });
+    }
+
+    IEnumerator DesligaLoginTela()
+    {
+        loginAnim.Play("login_inverse");
+        yield return new WaitForSeconds(1);
+        loginTela.SetActive(false);
     }
     
     public void TelaNivel()
     {
+        StartCoroutine(DesligaLoginTela());
         nivelTela.SetActive(true);
         animacao.Play("tela_nivel");
             
+    }
+
+    public void TelaLogin()
+    {
+        GameObject.Find("Menu").gameObject.SetActive(false);
+        GameObject.Find("Teo-Main").gameObject.SetActive(false);
+        loginTela.SetActive(true);
+        GameObject.Find("naoLogar_btn").GetComponent<Button>().onClick.AddListener(
+            () =>
+            {
+                TelaNivel();
+            }
+        );
+        loginAnim.Play("login");
     }
 
     public void Facil()

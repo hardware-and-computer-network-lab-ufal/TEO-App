@@ -29,7 +29,6 @@ public class Menu2 : MonoBehaviour {
 
 	public void QuitGame(){
         confirma.Play("confirmar_saida_inverse");
-        Debug.Log ("QUIT!");
 		Application.Quit ();
 	}
 
