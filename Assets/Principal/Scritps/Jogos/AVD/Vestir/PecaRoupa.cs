@@ -35,6 +35,7 @@ public class PecaRoupa : MonoBehaviour {
             GameObject.Find("teo").GetComponent<Image>().sprite = Resources.Load<Sprite>("Jogos/vestir/teo-"+gameObject.name);
             Musica.instance.OnRight();
             VestirManager.instance.clothesLentgh++;
+            VestirManager.instance.VerifyClothes();
             Destroy(gameObject);
         }
         

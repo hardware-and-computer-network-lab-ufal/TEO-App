@@ -25,11 +25,7 @@ public class VestirManager : MonoBehaviour {
     void Start () {
         StartCoroutine(DesligaPanel());
 	}
-
-    private void Update()
-    {
-        VerifyClothes();
-    }
+    
 
     IEnumerator VoltaPanelParabens()
     {
@@ -40,7 +36,7 @@ public class VestirManager : MonoBehaviour {
         panelParabens.SetActive(false);
     }
 
-    private void VerifyClothes()
+    public void VerifyClothes()
     {
         if (clothesLentgh == 4) //se ja tiver as quatro pecas ele acertou
         {
