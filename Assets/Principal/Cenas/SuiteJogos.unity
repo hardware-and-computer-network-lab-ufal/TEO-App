@@ -445,16 +445,21 @@ MonoBehaviour:
   iniciante:
   - nome: cores
   - nome: quebra-cabeca
+  - nome: NumerosQuadro
+  - nome: OndeEsta
+  - nome: Memoria
   intermediario:
   - nome: numeros
-  - nome: memoria
+  - nome: Memoria
   - nome: cores
+  - nome: OndeEsta
   avancado:
-  - nome: ondeEsta
+  - nome: OndeEsta
   - nome: quebra-cabeca
   - nome: cores
-  - nome: memoria
+  - nome: Memoria
   - nome: AVD
+  
   prateleira: {fileID: 155973546}
   botao: {fileID: 1974200443300512, guid: 4f9285160523c9a419722bac264b2978, type: 2}
 --- !u!4 &365575022

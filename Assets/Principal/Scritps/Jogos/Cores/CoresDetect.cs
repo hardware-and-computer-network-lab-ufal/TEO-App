@@ -6,13 +6,8 @@ public class CoresDetect : MonoBehaviour {
 
 	private Collision2D atualColisao;
 
-	public AudioSource som;
-	private AudioClip efeito;
 	void OnCollisionEnter2D (Collision2D obj) {
-		som = Cores.instance.GetComponent<AudioSource>();
-		som.Stop();
-		efeito = Resources.Load<AudioClip>("Som/Posicionou");
-		som.PlayOneShot(efeito);
+		Musica.instance.OnPositionated();
 		if (obj.gameObject.name == gameObject.name + " (1)"){
 			Cores.instance.destroyCircle = 1;
 			atualColisao = obj;
@@ -30,10 +25,7 @@ public class CoresDetect : MonoBehaviour {
 
 	void Update(){
 		if (Cores.instance.destroyCircle == 2){
-			som = Cores.instance.GetComponent<AudioSource>();
-			som.Stop();
-			efeito = Resources.Load<AudioClip>("Som/Acertou");
-			som.PlayOneShot(efeito);
+			Musica.instance.OnRight();
 			Destroy(atualColisao.gameObject, 0.2f);
 			Destroy(gameObject, 0.2f);
 			Cores.instance.contagemCores++;

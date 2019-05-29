@@ -14,9 +14,6 @@ public class Cores : MonoBehaviour {
 	public GameObject panelParabensFinal;
     public GameObject popup_voltar;
     private Animator parabensAnim, popup_voltar_anim;
-
-	public AudioSource som;
-	private AudioClip efeito;
 	public int contagemCores = 0;
 
 	private Queue<int> unicos = new Queue<int>();
@@ -34,25 +31,27 @@ public class Cores : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
+		panelParabensFinal = GameObject.Find("panel_parabens_final");
+		panelParabensFinal.SetActive(false);
 		contagemCores = 0;
 	}
 
 	IEnumerator DesligaPanel () {
 		yield return new WaitForSeconds(0.001f);
 		parabensAnim = panelParabens.GetComponent<Animator>();
+
         popup_voltar_anim = popup_voltar.GetComponent<Animator>();
         popup_voltar.SetActive(false);
         panelParabens.SetActive(false);
 		panelParabensFinal.SetActive(false);
-
 	}
 
 	IEnumerator VoltaPanelParabens() {
 		yield return new WaitForSeconds(5);
-		parabensAnim.Play("painel_parabens_reverse");
+		parabensAnim.Play("panel_parabens_reverse");
 		yield return new WaitForSeconds(1);
 		panelParabensFinal.SetActive(true);
-		panelParabens.SetActive(true);
+		panelParabens.SetActive(false);
 	}
 
 	public void JogarNovamente() {
@@ -62,10 +61,7 @@ public class Cores : MonoBehaviour {
 
 	public void CoresCompletas(int coresTotais) {
 		if (coresTotais == contagemCores) {
-			som = GetComponent<AudioSource>();
-			som.Stop();
-			efeito = Resources.Load<AudioClip>("Som/Parabens");
-			som.PlayOneShot(efeito);
+			Musica.instance.OnCongrats();
 			contagemCores++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
@@ -98,7 +94,7 @@ public class Cores : MonoBehaviour {
 		}
 	}
 	public List<GameObject> GerarCores(string complemento) {
-		List<GameObject> restultado = new List<GameObject>();
+		List<GameObject> resultado = new List<GameObject>();
 		Queue<int> coresEscolhidas = new Queue<int>();
 		foreach (int item in unicos) {
 			coresEscolhidas.Enqueue(item);
@@ -127,11 +123,11 @@ public class Cores : MonoBehaviour {
 
 		while (coresEscolhidas.Count != 0) {
 			int elemento = coresEscolhidas.Dequeue();
-			restultado.Add(GameObject.Find(coresIndex[elemento]));
+			resultado.Add(GameObject.Find(coresIndex[elemento]));
 		}
 
 		
-		return restultado;
+		return resultado;
 	}
 	public void CarregarCores() {
 		List<GameObject> circulos = GerarCores("");
@@ -175,7 +171,6 @@ public class Cores : MonoBehaviour {
 
 	void Start () {
 		panelParabens = GameObject.Find("panel_parabens");
-		panelParabensFinal = GameObject.Find("panel_parabens_final");
         popup_voltar = GameObject.Find("popup_voltar");
 
 		StartCoroutine(DesligaPanel());
