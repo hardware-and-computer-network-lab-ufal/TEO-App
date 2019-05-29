@@ -909,8 +909,8 @@ GameObject:
   m_Component:
   - component: {fileID: 746160901}
   - component: {fileID: 746160902}
-  - component: {fileID: 746160903}
   - component: {fileID: 746160904}
+  - component: {fileID: 746160903}
   m_Layer: 0
   m_Name: carteira
   m_TagString: carteira
@@ -2716,7 +2716,7 @@ Prefab:
       objectReference: {fileID: 1961435960}
     - target: {fileID: 1190338832945366, guid: 839ac0fe7e803334c8722f69c71fc9e5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114997032943835906, guid: 839ac0fe7e803334c8722f69c71fc9e5,
         type: 2}

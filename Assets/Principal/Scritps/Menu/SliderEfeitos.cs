@@ -11,12 +11,16 @@ public class SliderEfeitos : MonoBehaviour {
     void Start()
     {
         slider = gameObject.GetComponent<Slider>();
-
+        if (PlayerPrefs.HasKey("effect_volume"))
+        {
+            slider.value = PlayerPrefs.GetFloat("effect_volume");
+        }
     }
 
     public void OnSliderChanged()
     {
         Musica.instance.OnChangeEffectVolum(slider.value);
+        PlayerPrefs.SetFloat("effect_volume", slider.value);
     }
 
 }

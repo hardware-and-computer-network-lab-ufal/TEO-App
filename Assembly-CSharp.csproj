@@ -61,9 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AgoraVAI.cs" />
-    <Compile Include="Assets\AnimacaoNum.cs" />
-    <Compile Include="Assets\Lapis.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\AVD\Vestir\Cueca.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\AVD\Vestir\Meia.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\AVD\Vestir\Pe.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\AVD\Vestir\PecaRoupa.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\AVD\Vestir\Peito.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\AVD\Vestir\VestirManager.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\BotaoClass.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\Cores\Cores.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\Cores\CoresDetect.cs" />
@@ -76,7 +79,6 @@
     <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\Carteira.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\ConferirBtn.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\LapisJogo.cs" />
-    <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\numeros.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\SimboNumero.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\VoltarBtn.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Apresenta.cs" />
@@ -87,7 +89,6 @@
     <Compile Include="Assets\Principal\Scritps\Menu\SliderEfeitos.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\SliderMusica.cs" />
     <Compile Include="Assets\Principal\Scritps\Niveis\NivelManager.cs" />
-    <Compile Include="Assets\teste.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/samil/Documents/Desenvolvimento/TeoApp/teoNovo/TEO-App/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

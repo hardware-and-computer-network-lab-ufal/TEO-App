@@ -3,15 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Carteira : MonoBehaviour {
-
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    
 
     private void OnTriggerEnter2D(Collider2D outro) //o objeto (no unity) tem um rigidybody do tipo kinematico pq nao sofre os efeitos mas eh reconhecido
     {
