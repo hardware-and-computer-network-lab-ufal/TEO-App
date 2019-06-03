@@ -73,6 +73,14 @@
     <Compile Include="Assets\Principal\Scritps\Jogos\Cores\CoresMoviment.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\HomeBtn.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\JogosManager.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\Memoria\CartaClicked.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\Memoria\Memoria.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\NumerosQuadro\NumerosQuadro.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\NumerosQuadro\NumerosQuadroConferirBtn.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\NumerosQuadro\NumerosQuadroDetect.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\NumerosQuadro\NumerosQuadroMoviment.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\OndeEsta\OndeEsta.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\OndeEsta\OndeEstaDetect.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\Quebra-Cabeca\Fundo.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\Quebra-Cabeca\Peca.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\Quebra-Cabeca\QuebraCabecaManager.cs" />

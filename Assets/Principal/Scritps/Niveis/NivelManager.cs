@@ -8,8 +8,8 @@ public class NivelManager : MonoBehaviour {
 
     //public static NivelManager instance;
     [SerializeField]
-    private GameObject nivelTela,loginTela;
-    private Animator animacao,loginAnim;
+    private GameObject nivelTela,loginTela,esqueciTela;
+    private Animator animacao,loginAnim,esqueciAnim;
     public int nivel;
     [SerializeField]private Button playBtn;
     [SerializeField] private Button facilBtn,medioBtn,dificilBtn; //botoes nivel
@@ -38,8 +38,10 @@ public class NivelManager : MonoBehaviour {
         //componentes da tela de níveis
         nivelTela = GameObject.Find("Niveis");
         loginTela = GameObject.Find("Login");
+        esqueciTela = GameObject.Find("EsqueciAsenha");
         animacao = nivelTela.GetComponent<Animator>();
         loginAnim = loginTela.gameObject.GetComponent<Animator>();
+        esqueciAnim = esqueciTela.gameObject.GetComponent<Animator>();
         facilBtn = GameObject.Find("inicianteBtn").GetComponent<Button>();
         medioBtn = GameObject.Find("intermediarioBtn").GetComponent<Button>();
         dificilBtn = GameObject.Find("avancadoBtn").GetComponent<Button>();
@@ -58,13 +60,27 @@ public class NivelManager : MonoBehaviour {
         yield return new WaitForSeconds(1);
         loginTela.SetActive(false);
     }
-    
+
+    //IEnumerator DesligaEsqueciTela()
+    //{
+    //    esqueciAnim.Play("esqueciAsenha_inverse");
+    //    yield return new WaitForSeconds(1);
+    //    loginTela.SetActive(false);
+    //}
+
     public void TelaNivel()
     {
         StartCoroutine(DesligaLoginTela());
         nivelTela.SetActive(true);
         animacao.Play("tela_nivel");
             
+    }
+
+    public void TelaEsqueciAsenha()
+    {
+        StartCoroutine(DesligaLoginTela());
+        esqueciTela.SetActive(true);
+        esqueciAnim.Play("esqueciAsenha");
     }
 
     public void TelaLogin()
@@ -76,6 +92,12 @@ public class NivelManager : MonoBehaviour {
             () =>
             {
                 TelaNivel();
+            }
+        );
+        GameObject.Find("esqueci_btn").GetComponent<Button>().onClick.AddListener(
+            () =>
+            {
+                TelaEsqueciAsenha();
             }
         );
         loginAnim.Play("login");
