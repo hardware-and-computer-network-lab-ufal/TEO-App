@@ -11,7 +11,7 @@ public class NumerosQuadro : MonoBehaviour {
 
 	public static NumerosQuadro instance;
 	public GameObject panelParabens;
-	public GameObject panelParabensFinal;
+	public GameObject panelEstatistica;
 	public GameObject popup_voltar;
     public Animator parabensAnim;
 	private Animator popup_voltar_anim;
@@ -30,8 +30,8 @@ public class NumerosQuadro : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
-		panelParabensFinal = GameObject.Find("panel_parabens_final");
-		panelParabensFinal.SetActive(false);
+        panelEstatistica = GameObject.Find("panel_estatistica");
+        panelEstatistica.SetActive(false);
 		
 		sortearSoma();
 		somaTotal = 0;
@@ -44,14 +44,14 @@ public class NumerosQuadro : MonoBehaviour {
         popup_voltar_anim = popup_voltar.GetComponent<Animator>();
         popup_voltar.SetActive(false);
         panelParabens.SetActive(false);
-		panelParabensFinal.SetActive(false);
+        panelEstatistica.SetActive(false);
 	}
 
 	public IEnumerator VoltaPanelParabens() {
 		yield return new WaitForSeconds(5);
 		parabensAnim.Play("panel_parabens_reverse");
 		yield return new WaitForSeconds(1);
-		panelParabensFinal.SetActive(true);
+        panelEstatistica.SetActive(true);
 		panelParabens.SetActive(false);
 	}
 

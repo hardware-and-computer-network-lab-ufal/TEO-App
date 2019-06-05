@@ -23,7 +23,7 @@ public class Memoria : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
-		panelParabensFinal = GameObject.Find("panel_parabens_final");
+		panelParabensFinal = GameObject.Find("panel_estatisticas");
 		panelParabensFinal.SetActive(false);
 		dificuldade = PlayerPrefs.GetInt("nivel", 3);
 		posicionarCardsDeEscolha();
