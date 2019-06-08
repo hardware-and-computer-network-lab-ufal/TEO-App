@@ -9,6 +9,7 @@ TagManager:
   - lapis5
   - carteira
   - peca
+  - idioma
   layers:
   - Default
   - TransparentFX
