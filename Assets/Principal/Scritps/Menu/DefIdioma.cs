@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class DefIdioma : MonoBehaviour {
 
     [SerializeField]private Image idiomaAtualImage,idiomaAtualText;
-    private Image[] idiomas;
     private Button espanholBtn, inglesBtn, francesBtn, italianoBtn;
 
 	// Use this for initialization
@@ -35,16 +34,11 @@ public class DefIdioma : MonoBehaviour {
         string novoIdioma = idiomaAtualImage.sprite.name;
         idiomaAtualText.sprite = Resources.Load<Sprite>("Bandeiras/"+novoIdioma);
 
+        PlayerPrefs.SetString("novoIdioma", novoIdioma);
+
         btn.GetComponent<Image>().sprite = oldImage;
         btn.name = oldName+"_btn";
 
-        //Mudanca de imagens com textos
-        GameObject[] objetos = GameObject.FindGameObjectsWithTag("idioma");
-
-        foreach(GameObject g in objetos)
-        {
-            string name = g.name;
-            g.GetComponent<Image>().sprite = Resources.Load<Sprite>("Idiomas/"+novoIdioma+"/"+name);
-        }
+        //JogosManager.instance.MudaIdioma();
     }
 }

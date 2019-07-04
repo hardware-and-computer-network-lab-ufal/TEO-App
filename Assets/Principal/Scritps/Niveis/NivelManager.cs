@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class NivelManager : MonoBehaviour {
 
-    //public static NivelManager instance;
+    public static NivelManager instance;
     [SerializeField]
     private GameObject nivelTela,loginTela,esqueciTela;
     private Animator animacao,loginAnim,esqueciAnim;
@@ -16,6 +16,14 @@ public class NivelManager : MonoBehaviour {
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else
+        {
+            Destroy(gameObject);
+        }
 
         if (SceneManager.GetActiveScene().buildIndex == 0) //verificando se esta na cena do menu p nao dar erro em outras cenas
         {

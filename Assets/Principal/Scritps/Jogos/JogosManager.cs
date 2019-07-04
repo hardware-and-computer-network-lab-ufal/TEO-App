@@ -6,65 +6,43 @@ using UnityEngine.SceneManagement;
 
 public class JogosManager : MonoBehaviour {
 
-    [System.Serializable]
-    public class Botao
+    public static JogosManager instance;
+
+    private void Awake()
     {
-        public string nome;
-    }
-
-    [SerializeField]
-    private List<Botao> iniciante;
-    [SerializeField]
-    private List<Botao> intermediario;
-    [SerializeField]
-    private List<Botao> avancado;
-
-    public Transform prateleira;
-    public GameObject botao;
-
-    // Use this for initialization
-    void Start () {
-        int nivel = PlayerPrefs.GetInt("nivel");
-        if (nivel==1)
+        if (instance == null)
         {
-            InstanciaBotao(iniciante);
-        } else if (nivel == 2)
-        {
-            InstanciaBotao(intermediario);
-        } else if (nivel == 3)
-        {
-            InstanciaBotao(avancado);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    void InstanciaBotao(List<Botao> lista)
-    {
-        foreach (Botao b in lista)
+        else
         {
-            GameObject botaoObj = Instantiate(botao) as GameObject; //instancia um botao como gameobject da cena
-            botaoObj.transform.SetParent(prateleira, false); //seta o local para dentro da prateleira(painel)
-            Button botaoNovo = botaoObj.GetComponent<Button>(); //pega o gameobj e transforma num botao
-
-            botaoNovo.image.sprite = Resources.Load<Sprite>("Jogos/" + b.nome); //altera a img do botao
-
-            botaoNovo.onClick.AddListener( //chamando a cena com o nome do jogo
-                () =>
-                {
-                    GoJogo(b.nome);
-                }
-            );
-
-
+            Destroy(gameObject);
         }
+
+        SceneManager.sceneLoaded += OnLoadScene;
+
     }
 
-    void GoJogo(string nome)
+    private void OnLoadScene(Scene cena,LoadSceneMode modo)
     {
-        SceneManager.LoadScene(nome);
+        MudaIdioma();
+    }
+
+    public void MudaIdioma()
+    {
+        if(PlayerPrefs.HasKey("novoIdioma"))
+        {
+            string novoIdioma = PlayerPrefs.GetString("novoIdioma");
+
+            //Mudanca de imagens com textos
+            GameObject[] objetos = GameObject.FindGameObjectsWithTag("idioma");
+
+            foreach (GameObject g in objetos)
+            {
+                string name = g.name;
+                g.GetComponent<Image>().sprite = Resources.Load<Sprite>("Idiomas/" + novoIdioma + "/" + name);
+            }
+        }
     }
 }
