@@ -1,41 +1,62 @@
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Collections;
+using System.Collections.Generic;
 
 
 public class Conexao : MonoBehaviour {
-    private WWWForm form = new WWWForm();
+    private WWWForm form;
     private string tokenGlobal;
 
+    public Conexao() {
+        form = new WWWForm();
+    }
     public void addCampo(string campo, string valor) {
         form.AddField(campo, valor);
     }
 
-    // object upPost(string url, WWWForm dados) {
-        
-    // }
-    
-    // Usuario upGet(string url, WWWForm dados) {
-    //     UnityWebRequest www = UnityWebRequest.Post(url, dados);
+    private T upPost<T>(string url, WWWForm dados) {
+        UnityWebRequest www = UnityWebRequest.Post(url, dados);
+        www.SendWebRequest();
 
-    //     return JsonUtility.FromJson<Usuario>(www.downloadHandler.text);
-    // }
+        while(!www.isDone || !www.isNetworkError){}
+
+        if (www.isNetworkError) {
+            return default(T);
+        }
+
+        return JsonUtility.FromJson<T>(www.downloadHandler.text);
+    }
+    
+    private T upGet<T>(string url, Dictionary<string,string> dados) {
+        UnityWebRequest www = UnityWebRequest.Get(url);
+        foreach(string key in dados.Keys) {
+            www.SetRequestHeader(key, dados[key]);
+        }
+        
+        www.SendWebRequest();
+
+        while(!www.isDone || !www.isNetworkError){}
+
+        if (www.isNetworkError) {
+            return default(T);
+        }
+
+        return JsonUtility.FromJson<T>(www.downloadHandler.text);
+    }
 
     public void connect() {
         WWWForm login = new WWWForm();
         login.AddField("username", "admin");
         login.AddField("password", "admin1234");
-        
-        UnityWebRequest www = UnityWebRequest.Post("localhost:8000/api-token/", login);
 
-        while (www.isDone == false) {
-            print("teste");
-        }
+        // while (www.isDone == false) {
+        //     print("teste");
+        // }
         
-        var teste = JsonUtility.FromJson<Token>(www.downloadHandler.text);
+        var teste = upPost<Token>("http://127.0.0.1:8000/api-token/", login);
         
-        tokenGlobal = teste.token;
-        print(tokenGlobal);
+        // tokenGlobal = teste.token;
+        print(teste.token);
     }
 
     // public void getUsuarioJoga(){
