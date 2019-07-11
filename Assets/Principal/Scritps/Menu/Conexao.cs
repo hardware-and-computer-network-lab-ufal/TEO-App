@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.Generic;
+using System.Collections;
 
 
 public class Conexao : MonoBehaviour {
@@ -9,65 +10,68 @@ public class Conexao : MonoBehaviour {
 
     public Conexao() {
         form = new WWWForm();
+        connect();
     }
     public void addCampo(string campo, string valor) {
         form.AddField(campo, valor);
     }
 
     private T upPost<T>(string url, WWWForm dados) {
-        UnityWebRequest www = UnityWebRequest.Post(url, dados);
-        www.SendWebRequest();
+        UnityWebRequest request = UnityWebRequest.Post(url, dados);
+        if (tokenGlobal != null) {
+            request.SetRequestHeader("Authorization", "Token " + tokenGlobal);
+        }
+        request.SendWebRequest();
 
-        while(!www.isDone || !www.isNetworkError){}
+        while(!request.isDone && !request.isNetworkError){}
 
-        if (www.isNetworkError) {
+        if (request.isNetworkError) {
             return default(T);
         }
 
-        return JsonUtility.FromJson<T>(www.downloadHandler.text);
+        return JsonUtility.FromJson<T>(request.downloadHandler.text);
     }
     
-    private T upGet<T>(string url, Dictionary<string,string> dados) {
-        UnityWebRequest www = UnityWebRequest.Get(url);
-        foreach(string key in dados.Keys) {
-            www.SetRequestHeader(key, dados[key]);
+    private T upGet<T>(string url, Dictionary<string,string> dados = null) {
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        request.SetRequestHeader("Authorization", "Token " + tokenGlobal);
+        if (dados != null) {
+            foreach(string key in dados.Keys) {
+                request.SetRequestHeader(key, dados[key]);
+            }
         }
         
-        www.SendWebRequest();
+        request.SendWebRequest();
 
-        while(!www.isDone || !www.isNetworkError){}
+        while(!request.isDone && !request.isNetworkError){}
 
-        if (www.isNetworkError) {
+        if (request.isNetworkError) {
             return default(T);
         }
 
-        return JsonUtility.FromJson<T>(www.downloadHandler.text);
+        return JsonUtility.FromJson<T>(request.downloadHandler.text);
     }
 
     public void connect() {
         WWWForm login = new WWWForm();
         login.AddField("username", "admin");
         login.AddField("password", "admin1234");
-
-        // while (www.isDone == false) {
-        //     print("teste");
-        // }
         
-        var teste = upPost<Token>("http://127.0.0.1:8000/api-token/", login);
+        Token retorno = upPost<Token>("http://127.0.0.1:8000/api-token/", login);
         
-        // tokenGlobal = teste.token;
-        print(teste.token);
+        tokenGlobal = retorno.token;
     }
 
-    // public void getUsuarioJoga(){
-    //     WWWForm acesso = new WWWForm();
-    //     acesso.headers.Add("Authorization",("Token "+tokenGlobal));
+    public void getUsuarioJoga(){
+        
 
-    //     var teste = upGet("localhost:8000/api/", acesso) as Usuario;
+        UsuarioLista retorno = upGet<UsuarioLista>("localhost:8000/api/");
 
-    //     print(teste.cpf + ": " + teste.nome);
+        foreach (Usuario item in retorno.lista) {
+            print(item.nome + ": " + item.cpf);
+        }
 
-    // }
+    }
 }
 [System.Serializable]
 public class Token {
@@ -80,8 +84,10 @@ public class Usuario {
     public string nome;
 }
 
-// [System.Serializable]
-// public class 
+[System.Serializable]
+public class UsuarioLista {
+    public List<Usuario> lista;
+}
 
 [System.Serializable]
 public class UsuarioJoga {
