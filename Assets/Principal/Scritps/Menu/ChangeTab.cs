@@ -22,14 +22,14 @@ public class ChangeTab : MonoBehaviour {
             definitionsTab.SetActive(false);
             estatisticsTab.SetActive(true);
 
-            //JogosManager.instance.MudaIdioma();
+            TEOManager.instance.MudaIdioma();
 
         } else if (gameObject.name.Equals("VaiDef"))
         {
             definitionsTab.SetActive(true);
             estatisticsTab.SetActive(false);
 
-            //JogosManager.instance.MudaIdioma();
+            TEOManager.instance.MudaIdioma();
         }
     }
 

@@ -6595,12 +6595,12 @@ GameObject:
   - component: {fileID: 1607462936}
   - component: {fileID: 1607462935}
   m_Layer: 0
-  m_Name: JogosManager
+  m_Name: TEOManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1607462935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6918,7 +6918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1710327182}
   m_Layer: 0
-  m_Name: Menu
+  m_Name: MenuGeral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

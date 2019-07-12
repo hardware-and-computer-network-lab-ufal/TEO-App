@@ -39,6 +39,6 @@ public class DefIdioma : MonoBehaviour {
         btn.GetComponent<Image>().sprite = oldImage;
         btn.name = oldName+"_btn";
 
-        //JogosManager.instance.MudaIdioma();
+        TEOManager.instance.MudaIdioma();
     }
 }
