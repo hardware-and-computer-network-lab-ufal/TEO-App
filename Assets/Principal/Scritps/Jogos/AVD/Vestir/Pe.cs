@@ -7,6 +7,7 @@ public class Pe : MonoBehaviour {
     
     private void OnTriggerEnter2D(Collider2D outro)
     {
+        print("Entrou verificação");
         if (outro.name == "meia")
         {
             

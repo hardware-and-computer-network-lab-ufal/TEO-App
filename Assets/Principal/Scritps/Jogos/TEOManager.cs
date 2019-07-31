@@ -20,12 +20,18 @@ public class TEOManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        SceneManager.sceneLoaded += OnLoadScene;
+        if(SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            SceneManager.sceneLoaded += OnLoadScene;
+        }
+        
 
     }
 
     private void OnLoadScene(Scene cena,LoadSceneMode modo)
     {
+        print("Nova cena carregada: " + cena.name);
+        Debug.Log("Teste");
         MudaIdioma();
     }
 

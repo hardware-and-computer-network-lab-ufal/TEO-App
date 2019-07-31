@@ -60,6 +60,9 @@ public class NivelManager : MonoBehaviour {
         //Botao play
         playBtn = GameObject.Find("PlayButton").GetComponent<Button>();
         playBtn.onClick.AddListener(() => { TelaLogin(); });
+
+        //Muda idioma
+        TEOManager.instance.MudaIdioma();
     }
 
     IEnumerator DesligaLoginTela()
@@ -96,9 +99,11 @@ public class NivelManager : MonoBehaviour {
         GameObject.Find("Menu").gameObject.SetActive(false);
         GameObject.Find("Teo-Main").gameObject.SetActive(false);
         loginTela.SetActive(true);
-        GameObject.Find("naoLogar_btn").GetComponent<Button>().onClick.AddListener(
+        loginAnim.Play("login");
+        GameObject.Find("naologar_label").GetComponent<Button>().onClick.AddListener(
             () =>
             {
+                print("Debug 1");
                 TelaNivel();
             }
         );
