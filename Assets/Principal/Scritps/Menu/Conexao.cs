@@ -22,12 +22,12 @@ public class Conexao {
 		}
 		request.SendWebRequest();
 
-		while(!request.isDone && !request.isNetworkError){
-			Debug.Log("Success!");
-		}
+		while(!request.isDone && !request.isNetworkError && !request.isHttpError){}
 
-		if (request.isNetworkError) {
+		if (request.isNetworkError || request.isHttpError) {
 			return default(T);
+		} else {
+			Debug.Log("Success");
 		}
 
 		return JsonUtility.FromJson<T>(request.downloadHandler.text);
