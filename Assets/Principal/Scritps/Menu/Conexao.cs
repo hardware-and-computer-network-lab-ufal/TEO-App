@@ -8,10 +8,13 @@ public class Conexao {
 	private string tokenGlobal;
 	public bool conectado = false;
 
+	public static Conexao instance;
+
 	public Conexao(string username, string password) {
 		conectado = connect(username, password);
 	}
 	public Conexao() {
+		instance = this;
 		connect();
 	}
 

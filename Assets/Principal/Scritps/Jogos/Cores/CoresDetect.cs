@@ -26,6 +26,7 @@ public class CoresDetect : MonoBehaviour {
 	void Update(){
 		if (Cores.instance.destroyCircle == 2){
 			Musica.instance.OnRight();
+			Cores.instance.usuario.quantidadeAcertos++;
 			Destroy(atualColisao.gameObject, 0.2f);
 			Destroy(gameObject, 0.2f);
 			Cores.instance.contagemCores++;

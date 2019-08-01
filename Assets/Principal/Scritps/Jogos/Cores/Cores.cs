@@ -19,6 +19,14 @@ public class Cores : MonoBehaviour {
 	private Queue<int> unicos = new Queue<int>();
 	private int dificuldade;
 
+	public UsuarioJoga usuario = new UsuarioJoga();
+	/*  cpf = "" (Missing)
+		nomeJogo = Cores
+		tempoJogo = SET
+		quantidadeAcertos = SET
+		quantidadeErros = SET
+	*/
+
 	/* Os valores de destroyCircle podem ser 0, 1, 2:
 		Caso 0: Objeto não está colidindo, nem deve ser destruído
 		Caso 1: Objeto colidiu
@@ -62,6 +70,7 @@ public class Cores : MonoBehaviour {
 	public void CoresCompletas(int coresTotais) {
 		if (coresTotais == contagemCores) {
 			Musica.instance.OnCongrats();
+			usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
 			contagemCores++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
@@ -179,6 +188,7 @@ public class Cores : MonoBehaviour {
 		sortearCores();
 		CarregarCores();
 		CoresSeleciona();
+		usuario.nomeJogo = "Cores";
 	}
 	
 	void Update () {
