@@ -179,6 +179,11 @@ public class Cores : MonoBehaviour {
 		sortearCores();
 		CarregarCores();
 		CoresSeleciona();
+		Conexao c = new Conexao();
+		// c.getUsuarioJoga();
+		UsuarioJoga user = new UsuarioJoga("12345678901", "Cores", 2, 6, 0);
+		c.addUsuarioJoga(user);
+		
 	}
 	
 	void Update () {
