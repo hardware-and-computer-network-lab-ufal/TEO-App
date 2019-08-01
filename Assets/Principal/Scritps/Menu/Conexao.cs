@@ -5,15 +5,10 @@ using System.Collections;
 
 
 public class Conexao : MonoBehaviour {
-	private WWWForm form;
 	private string tokenGlobal;
 
 	public Conexao() {
-		form = new WWWForm();
 		connect();
-	}
-	public void addCampo(string campo, string valor) {
-		form.AddField(campo, valor);
 	}
 
 	private T upPost<T>(string url, WWWForm dados) {
@@ -59,7 +54,7 @@ public class Conexao : MonoBehaviour {
 		login.AddField("username", "admin");
 		login.AddField("password", "admin1234");
 		
-		Token retorno = upPost<Token>("http://127.0.0.1:8000/api-token/", login);
+		Token retorno = upPost<Token>("localhost:8000/api-token/", login);
 		
 		tokenGlobal = retorno.token;
 	}
@@ -99,6 +94,7 @@ public class Conexao : MonoBehaviour {
 		UsuarioJoga retorno = upPost<UsuarioJoga>("localhost:8000/api-jogos/", partida);
 	}
 }
+
 [System.Serializable]
 public class Token {
 	public string token;
