@@ -71,6 +71,8 @@ public class Cores : MonoBehaviour {
 		if (coresTotais == contagemCores) {
 			Musica.instance.OnCongrats();
 			usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
+			Conexao.instance.addUsuarioJoga(usuario);
+			
 			contagemCores++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
