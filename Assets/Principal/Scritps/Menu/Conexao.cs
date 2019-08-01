@@ -4,9 +4,13 @@ using System.Collections.Generic;
 using System.Collections;
 
 
-public class Conexao : MonoBehaviour {
+public class Conexao {
 	private string tokenGlobal;
+	public bool conectado = false;
 
+	public Conexao(string username, string password) {
+		conectado = connect(username, password);
+	}
 	public Conexao() {
 		connect();
 	}
@@ -19,7 +23,7 @@ public class Conexao : MonoBehaviour {
 		request.SendWebRequest();
 
 		while(!request.isDone && !request.isNetworkError){
-			print("Success!");
+			Debug.Log("Success!");
 		}
 
 		if (request.isNetworkError) {
@@ -49,14 +53,18 @@ public class Conexao : MonoBehaviour {
 		return JsonUtility.FromJson<T>(request.downloadHandler.text);
 	}
 
-	public void connect() {
+	public bool connect(string username = "admin", string password = "admin1234") {
 		WWWForm login = new WWWForm();
-		login.AddField("username", "admin");
-		login.AddField("password", "admin1234");
+		login.AddField("username", username);
+		login.AddField("password", password);
 		
 		Token retorno = upPost<Token>("localhost:8000/api-token/", login);
+		if (retorno == default(Token)) {
+			return false;
+		}
 		
 		tokenGlobal = retorno.token;
+		return true;
 	}
 
 	public Dictionary<string,string> getUsuarios() {
