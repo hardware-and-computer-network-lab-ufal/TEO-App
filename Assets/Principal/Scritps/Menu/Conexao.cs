@@ -11,6 +11,7 @@ public class Conexao {
 	public static Conexao instance;
 
 	public Conexao(string username, string password) {
+		instance = this;
 		conectado = connect(username, password);
 	}
 	public Conexao() {
@@ -19,13 +20,17 @@ public class Conexao {
 	}
 
 	private T upPost<T>(string url, WWWForm dados) {
+		if(conectado == false) {
+			Debug.Log("Não conectado!");
+			return default(T);
+		}
 		UnityWebRequest request = UnityWebRequest.Post(url, dados);
 		if (tokenGlobal != null) {
 			request.SetRequestHeader("Authorization", "Token " + tokenGlobal);
 		}
 		request.SendWebRequest();
 
-		while(!request.isDone && !request.isNetworkError && !request.isHttpError){}
+		while(!request.isDone && !request.isNetworkError && !request.isHttpError && conectado){}
 
 		if (request.isNetworkError || request.isHttpError) {
 			return default(T);
@@ -37,6 +42,10 @@ public class Conexao {
 	}
 	
 	private T upGet<T>(string url, Dictionary<string,string> dados = null) {
+		if(conectado == false) {
+			Debug.Log("Não conectado!");
+			return default(T);
+		}
 		UnityWebRequest request = UnityWebRequest.Get(url);
 		request.SetRequestHeader("Authorization", "Token " + tokenGlobal);
 		if (dados != null) {
@@ -60,9 +69,11 @@ public class Conexao {
 		WWWForm login = new WWWForm();
 		login.AddField("username", username);
 		login.AddField("password", password);
+		conectado = true; // para passar a tentativa de conexão
 		
 		Token retorno = upPost<Token>("localhost:8000/api-token/", login);
 		if (retorno == default(Token)) {
+			Debug.Log("Default mesmo");
 			return false;
 		}
 		
