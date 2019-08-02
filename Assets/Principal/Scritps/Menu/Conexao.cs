@@ -13,11 +13,16 @@ public class Conexao {
 	public Conexao(string username, string password) {
 		instance = this;
 		conectado = connect(username, password);
+		if(username == "" || password == "") {
+			throw new System.Exception("Dados incompletos!");
+		} else if (conectado == false && username != "naoLogar") {
+			throw new System.Exception("Dados incorretos!");
+		}
 	}
-	public Conexao() {
-		instance = this;
-		connect();
-	}
+	// public Conexao() {
+	// 	instance = this;
+	// 	connect();
+	// }
 
 	private T upPost<T>(string url, WWWForm dados) {
 		if(conectado == false) {
@@ -65,7 +70,7 @@ public class Conexao {
 		return JsonUtility.FromJson<T>(request.downloadHandler.text);
 	}
 
-	public bool connect(string username = "admin", string password = "admin1234") {
+	public bool connect(string username, string password) {
 		WWWForm login = new WWWForm();
 		login.AddField("username", username);
 		login.AddField("password", password);
@@ -73,7 +78,6 @@ public class Conexao {
 		
 		Token retorno = upPost<Token>("localhost:8000/api-token/", login);
 		if (retorno == default(Token)) {
-			Debug.Log("Default mesmo");
 			return false;
 		}
 		
