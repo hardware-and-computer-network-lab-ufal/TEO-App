@@ -51,7 +51,18 @@ public class NivelManager : MonoBehaviour {
 
         //Botao play
         playBtn = GameObject.Find("PlayButton").GetComponent<Button>();
-        playBtn.onClick.AddListener(() => { TelaLogin(); });
+        playBtn.onClick.AddListener(() => {
+            try {
+                if (Login.conexao.conectado == false){
+                    TelaLogin();
+                } else {
+                    TelaNivel();
+                }
+            }
+            catch (System.Exception) {
+                TelaLogin();
+            }
+        });
     }
 
     IEnumerator DesligaLoginTela()
@@ -87,12 +98,6 @@ public class NivelManager : MonoBehaviour {
         GameObject.Find("Menu").gameObject.SetActive(false);
         GameObject.Find("Teo-Main").gameObject.SetActive(false);
         loginTela.SetActive(true);
-        // GameObject.Find("naoLogar_btn").GetComponent<Button>().onClick.AddListener(
-        //     () =>
-        //     {
-        //         TelaNivel();
-        //     }
-        // );
         GameObject.Find("esqueci_btn").GetComponent<Button>().onClick.AddListener(
             () =>
             {
