@@ -6084,6 +6084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482787739}
   - component: {fileID: 1482787740}
+  - component: {fileID: 1482787741}
   m_Layer: 5
   m_Name: Login
   m_TagString: Untagged
@@ -6138,6 +6139,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1482787741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1482787738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2e1c78754af425fa982a95f8dfc2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conferir: {fileID: 0}
 --- !u!1 &1500102016
 GameObject:
   m_ObjectHideFlags: 0
@@ -8377,7 +8390,7 @@ GameObject:
   - component: {fileID: 2081280278}
   - component: {fileID: 2081280277}
   m_Layer: 5
-  m_Name: conferir_btn
+  m_Name: conferirLogin_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

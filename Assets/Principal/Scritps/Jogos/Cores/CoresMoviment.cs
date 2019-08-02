@@ -21,6 +21,7 @@ public class CoresMoviment : MonoBehaviour {
 		if (Cores.instance.destroyCircle == 0) {
 			transform.position = positionDefault;
 			Musica.instance.OnFail();
+			Cores.instance.usuario.quantidadeErros++;
 		} else if(Cores.instance.destroyCircle == 1) {
 			Cores.instance.destroyCircle = 2;
 		}

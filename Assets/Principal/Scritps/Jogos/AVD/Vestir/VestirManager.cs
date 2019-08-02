@@ -14,12 +14,17 @@ public class VestirManager : MonoBehaviour {
     public bool rightClothe = false;
     public int clothesLentgh=0;
 
+    public UsuarioJoga usuario;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+        //temporariamente
+		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
+        usuario.nomeJogo = "Vestir";
     }
     // Use this for initialization
     void Start () {
@@ -43,6 +48,9 @@ public class VestirManager : MonoBehaviour {
             panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
             Musica.instance.OnCongrats();
+            usuario.quantidadeAcertos = clothesLentgh;
+            usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
+            Login.conexao.addUsuarioJoga(usuario);
             StartCoroutine(VoltaPanelParabens());
         }
     }

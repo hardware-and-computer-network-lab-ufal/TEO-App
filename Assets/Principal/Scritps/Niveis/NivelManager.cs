@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class NivelManager : MonoBehaviour {
 
-    //public static NivelManager instance;
+    public static NivelManager instance;
     [SerializeField]
     private GameObject nivelTela,loginTela,esqueciTela;
     private Animator animacao,loginAnim,esqueciAnim;
@@ -22,7 +22,7 @@ public class NivelManager : MonoBehaviour {
             SceneManager.sceneLoaded += CarregaCena; //sempre que a cena abrir vai carregar esses objs
         }
 
-        
+        instance = this;
     }
 
     private void Start()
@@ -51,7 +51,18 @@ public class NivelManager : MonoBehaviour {
 
         //Botao play
         playBtn = GameObject.Find("PlayButton").GetComponent<Button>();
-        playBtn.onClick.AddListener(() => { TelaLogin(); });
+        playBtn.onClick.AddListener(() => {
+            try {
+                if (Login.conexao.conectado == false){
+                    TelaLogin();
+                } else {
+                    TelaNivel();
+                }
+            }
+            catch (System.Exception) {
+                TelaLogin();
+            }
+        });
     }
 
     IEnumerator DesligaLoginTela()
@@ -73,7 +84,6 @@ public class NivelManager : MonoBehaviour {
         StartCoroutine(DesligaLoginTela());
         nivelTela.SetActive(true);
         animacao.Play("tela_nivel");
-            
     }
 
     public void TelaEsqueciAsenha()
@@ -88,12 +98,6 @@ public class NivelManager : MonoBehaviour {
         GameObject.Find("Menu").gameObject.SetActive(false);
         GameObject.Find("Teo-Main").gameObject.SetActive(false);
         loginTela.SetActive(true);
-        GameObject.Find("naoLogar_btn").GetComponent<Button>().onClick.AddListener(
-            () =>
-            {
-                TelaNivel();
-            }
-        );
         GameObject.Find("esqueci_btn").GetComponent<Button>().onClick.AddListener(
             () =>
             {

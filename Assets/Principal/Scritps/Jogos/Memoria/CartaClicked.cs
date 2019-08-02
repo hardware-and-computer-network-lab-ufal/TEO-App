@@ -22,6 +22,7 @@ public class CartaClicked : MonoBehaviour {
 			return true;
 		}
 		Musica.instance.OnFail();
+		Memoria.instance.usuario.quantidadeErros++;
 		return false;
 	}
 

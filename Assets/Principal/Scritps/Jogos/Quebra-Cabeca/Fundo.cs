@@ -29,6 +29,7 @@ public class Fundo : MonoBehaviour {
         } else if(outro.gameObject.name != this.gameObject.name && !outro.gameObject.name.Contains("p"))
         {
             Musica.instance.OnFail();
+            QuebraCabecaManager.instance.usuario.quantidadeErros++;
         }
     }
 
