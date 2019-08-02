@@ -24,7 +24,7 @@ public class Login : MonoBehaviour {
 
 		naoLogar.onClick.AddListener(
 			() => {
-				conexao = new Conexao("espantalho1234", "espantalho1234");
+				conexao = new Conexao("naoLogar", "naoLogar");
 				NivelManager.instance.TelaNivel();
 			}
 		);
@@ -34,7 +34,15 @@ public class Login : MonoBehaviour {
 		string username = campo_login.GetComponent<InputField>().text;
 		string password = campo_senha.GetComponent<InputField>().text;
 
-		conexao = new Conexao(username, password);
+		try {
+			conexao = new Conexao(username, password);
+		}
+		catch (System.Exception e) {
+			print(e.Message);
+			Musica.instance.OnFail();
+			return;
+		}
+
 		NivelManager.instance.TelaNivel();
 	}
 }
