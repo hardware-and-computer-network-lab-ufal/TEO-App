@@ -42,6 +42,8 @@ public class Cores : MonoBehaviour {
 		panelParabensFinal = GameObject.Find("panel_parabens_final");
 		panelParabensFinal.SetActive(false);
 		contagemCores = 0;
+		//temporariamente
+		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
 	}
 
 	IEnumerator DesligaPanel () {
@@ -71,8 +73,10 @@ public class Cores : MonoBehaviour {
 		if (coresTotais == contagemCores) {
 			Musica.instance.OnCongrats();
 			usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
-			Conexao.instance.addUsuarioJoga(usuario);
-			
+			// Login.conexao.instance.addUsuarioJoga(usuario);
+			usuario.quantidadeAcertos = contagemCores;
+			Login.conexao.addUsuarioJoga(usuario);
+
 			contagemCores++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");
