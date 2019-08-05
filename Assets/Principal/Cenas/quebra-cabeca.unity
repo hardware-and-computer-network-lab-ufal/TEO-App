@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 445447129}
   - component: {fileID: 445447128}
   m_Layer: 5
-  m_Name: Image
+  m_Name: nao_resposta
   m_TagString: idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

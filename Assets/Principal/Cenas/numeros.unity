@@ -811,7 +811,7 @@ RectTransform:
   - {fileID: 2039735769}
   - {fileID: 446764077}
   m_Father: {fileID: 1462594200}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1461,7 +1461,7 @@ GameObject:
   - component: {fileID: 994108962}
   - component: {fileID: 994108961}
   m_Layer: 5
-  m_Name: Image
+  m_Name: nao_resposta
   m_TagString: idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3020,11 +3020,11 @@ RectTransform:
   - {fileID: 1945069260}
   - {fileID: 1961435956}
   - {fileID: 447366623}
-  - {fileID: 1504235491}
-  - {fileID: 83126172}
   - {fileID: 1579005634}
-  - {fileID: 1249630315}
+  - {fileID: 83126172}
+  - {fileID: 1504235491}
   - {fileID: 510248051}
+  - {fileID: 1249630315}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3261,7 +3261,7 @@ RectTransform:
   m_LocalScale: {x: 0.99996233, y: 0.99996233, z: 0.99996233}
   m_Children: []
   m_Father: {fileID: 1462594200}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3538,7 +3538,7 @@ RectTransform:
   m_Children:
   - {fileID: 1803210319}
   m_Father: {fileID: 1462594200}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.19378254, y: 0}
   m_AnchorMax: {x: 0.795, y: 1}

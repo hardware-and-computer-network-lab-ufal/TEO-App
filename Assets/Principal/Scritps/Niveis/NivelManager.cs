@@ -103,7 +103,6 @@ public class NivelManager : MonoBehaviour {
         GameObject.Find("naologar_label").GetComponent<Button>().onClick.AddListener(
             () =>
             {
-                print("Debug 1");
                 TelaNivel();
             }
         );

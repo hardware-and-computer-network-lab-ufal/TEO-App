@@ -10,6 +10,10 @@ public class DefIdioma : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        if (PlayerPrefs.HasKey("novoIdioma"))
+        {
+            TEOManager.instance.MudaIdioma();
+        }
         idiomaAtualImage = GameObject.Find("idioma_atual").GetComponent<Image>();
         idiomaAtualText = GameObject.Find("idioma_texto").GetComponent<Image>();
 
@@ -22,6 +26,8 @@ public class DefIdioma : MonoBehaviour {
         inglesBtn.onClick.AddListener(() => IdiomaButton(inglesBtn));
         francesBtn.onClick.AddListener(() => IdiomaButton(francesBtn));
         italianoBtn.onClick.AddListener(() => IdiomaButton(italianoBtn));
+
+        
     }
 	
 

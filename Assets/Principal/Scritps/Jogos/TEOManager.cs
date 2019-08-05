@@ -20,11 +20,13 @@ public class TEOManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        if(SceneManager.GetActiveScene().buildIndex != 0)
-        {
-            SceneManager.sceneLoaded += OnLoadScene;
-        }
-        
+        //if(SceneManager.GetActiveScene().buildIndex != 0)
+        //{
+        //    SceneManager.sceneLoaded += OnLoadScene;
+        //}
+
+        SceneManager.sceneLoaded += OnLoadScene;
+
 
     }
 
@@ -46,7 +48,7 @@ public class TEOManager : MonoBehaviour {
 
             foreach (GameObject g in objetos)
             {
-                print(g.name);
+                //print(g.name);
                 string name = g.name;
                 g.GetComponent<Image>().sprite = Resources.Load<Sprite>("Idiomas/" + novoIdioma + "/" + name);
             }

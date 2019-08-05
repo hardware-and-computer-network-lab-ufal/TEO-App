@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 129183202}
   - component: {fileID: 129183201}
   m_Layer: 5
-  m_Name: Image
+  m_Name: nao_resposta
   m_TagString: idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1425,8 +1425,8 @@ RectTransform:
   - {fileID: 1097109839}
   - {fileID: 1830059066}
   - {fileID: 3902889}
-  - {fileID: 1266546091}
   - {fileID: 1478026297}
+  - {fileID: 1266546091}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4407,7 +4407,7 @@ RectTransform:
   - {fileID: 39170270}
   - {fileID: 1360960910}
   m_Father: {fileID: 494519303}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

@@ -2180,7 +2180,7 @@ GameObject:
   - component: {fileID: 1166016714}
   - component: {fileID: 1166016713}
   m_Layer: 5
-  m_Name: Image
+  m_Name: nao_resposta
   m_TagString: idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
