@@ -219,9 +219,17 @@ public class Memoria : MonoBehaviour {
         popup_voltar_anim.Play("popup_voltar");
     }
 
+    IEnumerator DesligaVoltarPanel()
+    {
+        yield return new WaitForSeconds(1);
+        popup_voltar.SetActive(false);
+    }
+
+
     public void Continue()
     {
         popup_voltar_anim.Play("popup_voltar_inverse");
+        StartCoroutine(DesligaVoltarPanel());
     }
 
 }

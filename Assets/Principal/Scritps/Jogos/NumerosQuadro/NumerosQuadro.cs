@@ -30,7 +30,7 @@ public class NumerosQuadro : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
-        panelEstatistica = GameObject.Find("panel_estatistica");
+        panelEstatistica = GameObject.Find("panel_estatisticas");
         panelEstatistica.SetActive(false);
 		
 		sortearSoma();
@@ -121,8 +121,17 @@ public class NumerosQuadro : MonoBehaviour {
         popup_voltar_anim.Play("popup_voltar");
     }
 
+    IEnumerator DesligaVoltarPanel()
+    {
+        yield return new WaitForSeconds(1);
+        popup_voltar.SetActive(false);
+    }
+
     public void Continue()
     {
         popup_voltar_anim.Play("popup_voltar_inverse");
+        StartCoroutine(DesligaVoltarPanel());
     }
+
+    
 }
