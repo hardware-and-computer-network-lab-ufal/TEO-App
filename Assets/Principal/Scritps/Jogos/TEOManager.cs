@@ -33,7 +33,6 @@ public class TEOManager : MonoBehaviour {
     private void OnLoadScene(Scene cena,LoadSceneMode modo)
     {
         print("Nova cena carregada: " + cena.name);
-        Debug.Log("Teste");
         MudaIdioma();
     }
 

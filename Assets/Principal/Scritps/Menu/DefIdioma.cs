@@ -10,10 +10,7 @@ public class DefIdioma : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if (PlayerPrefs.HasKey("novoIdioma"))
-        {
-            TEOManager.instance.MudaIdioma();
-        }
+        
         idiomaAtualImage = GameObject.Find("idioma_atual").GetComponent<Image>();
         idiomaAtualText = GameObject.Find("idioma_texto").GetComponent<Image>();
 
@@ -22,23 +19,33 @@ public class DefIdioma : MonoBehaviour {
         francesBtn = GameObject.Find("frances_btn").GetComponent<Button>();
         italianoBtn = GameObject.Find("italiano_btn").GetComponent<Button>();
 
-        espanholBtn.onClick.AddListener(()=>IdiomaButton(espanholBtn));
+        espanholBtn.onClick.AddListener(() => IdiomaButton(espanholBtn));
         inglesBtn.onClick.AddListener(() => IdiomaButton(inglesBtn));
         francesBtn.onClick.AddListener(() => IdiomaButton(francesBtn));
         italianoBtn.onClick.AddListener(() => IdiomaButton(italianoBtn));
 
+        if (PlayerPrefs.HasKey("novoIdioma"))
+        {
+            string novoIdioma = PlayerPrefs.GetString("novoIdioma");
+
+            Button btn = GameObject.Find(novoIdioma+"_btn").GetComponent<Button>();
+
+            IdiomaButton(btn);
+
+            TEOManager.instance.MudaIdioma();
+        }
         
     }
 	
 
     void IdiomaButton(Button btn)
     {
-        string oldName = idiomaAtualImage.sprite.name;
-        Sprite oldImage = idiomaAtualImage.sprite;
+        string oldName = idiomaAtualImage.sprite.name; //pega o nome do idioma anterior atraves do nome da imagem associada
+        Sprite oldImage = idiomaAtualImage.sprite; //pega a imagem do idioma anterior
         
-        idiomaAtualImage.sprite = btn.GetComponent<Image>().sprite;
+        idiomaAtualImage.sprite = btn.GetComponent<Image>().sprite; // muda a imagem do botao do idioma atraves do nome do botao passado - q tera o nome do novo idioma e a img associada desse idioma tb
         string novoIdioma = idiomaAtualImage.sprite.name;
-        idiomaAtualText.sprite = Resources.Load<Sprite>("Bandeiras/"+novoIdioma);
+        idiomaAtualText.sprite = Resources.Load<Sprite>("TextoIdiomas/" + novoIdioma);
 
         PlayerPrefs.SetString("novoIdioma", novoIdioma);
 
