@@ -32,7 +32,7 @@ public class DefIdioma : MonoBehaviour {
 
             IdiomaButton(btn);
 
-            TEOManager.instance.MudaIdioma();
+            //TEOManager.instance.MudaIdioma();
         }
         
     }

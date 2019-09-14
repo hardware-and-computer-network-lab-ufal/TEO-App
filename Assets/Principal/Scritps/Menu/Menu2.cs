@@ -19,6 +19,7 @@ public class Menu2 : MonoBehaviour {
         confirmaSaida.SetActive(true);
         confirma = confirmaSaida.GetComponent<Animator>();
         confirma.Play("confirmar_saida");
+        TEOManager.instance.MudaIdioma();
     }
 
     public void NaoSair()

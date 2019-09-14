@@ -92,6 +92,7 @@
     <Compile Include="Assets\Principal\Scritps\Jogos\SimboNumero\SimboNumero.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\TEOManager.cs" />
     <Compile Include="Assets\Principal\Scritps\Jogos\VoltarBtn.cs" />
+    <Compile Include="Assets\Principal\Scritps\Jogos\VoltarDefinicoes.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\Apresenta.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\ChangeTab.cs" />
     <Compile Include="Assets\Principal\Scritps\Menu\DefIdioma.cs" />
