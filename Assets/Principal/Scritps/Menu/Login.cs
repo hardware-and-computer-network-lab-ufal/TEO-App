@@ -24,7 +24,11 @@ public class Login : MonoBehaviour {
 
 		naoLogar.onClick.AddListener(
 			() => {
-				conexao = new Conexao("naoLogar", "naoLogar");
+				try{
+					conexao = new Conexao("naoLogar", "naoLogar");
+				} catch (System.Exception e) {
+					print(e.Message);
+				}
 				NivelManager.instance.TelaNivel();
 			}
 		);
