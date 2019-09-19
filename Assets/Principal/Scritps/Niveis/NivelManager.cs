@@ -30,7 +30,7 @@ public class NivelManager : MonoBehaviour {
             SceneManager.sceneLoaded += CarregaCena; //sempre que a cena abrir vai carregar esses objs
         }
 
-        
+        instance = this;
     }
 
     private void Start()
@@ -61,10 +61,19 @@ public class NivelManager : MonoBehaviour {
 
         //Botao play
         playBtn = GameObject.Find("PlayButton").GetComponent<Button>();
-        playBtn.onClick.AddListener(() => { TelaLogin(); });
-
-        //Muda idioma
-        TEOManager.instance.MudaIdioma();
+        playBtn.onClick.AddListener(() => {
+            try {
+                if (Login.conexao.conectado == false){
+                    TelaLogin();
+                } else {
+                    TelaNivel();
+                }
+            }
+            catch (System.Exception) {
+                TelaLogin();
+            }
+            TEOManager.instance.MudaIdioma();
+        });
     }
 
     IEnumerator DesligaLoginTela()
@@ -86,7 +95,6 @@ public class NivelManager : MonoBehaviour {
         StartCoroutine(DesligaLoginTela());
         nivelTela.SetActive(true);
         animacao.Play("tela_nivel");
-            
     }
 
     public void TelaEsqueciAsenha()

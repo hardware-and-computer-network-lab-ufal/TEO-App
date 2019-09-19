@@ -23,6 +23,8 @@ public class NumerosQuadro : MonoBehaviour {
 	private Vector3 posInicial;
 	public int numeroSorteadoUm, numeroSorteadoDois;
 
+	public UsuarioJoga usuario;
+
 	public int somaTotal = 0;
 
 	private void Awake() {
@@ -33,7 +35,9 @@ public class NumerosQuadro : MonoBehaviour {
         panelEstatistica = GameObject.Find("panel_estatisticas");
         TEOManager.instance.MudaIdioma();
         panelEstatistica.SetActive(false);
-		
+		//temporariamente
+		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
+		usuario.nomeJogo = "Quanto É?";
 		sortearSoma();
 		somaTotal = 0;
 	}

@@ -9,6 +9,7 @@ public class Memoria : MonoBehaviour {
 	public GameObject panelParabensFinal;
 	public GameObject popup_voltar;
     private Animator parabensAnim, popup_voltar_anim;
+	public UsuarioJoga usuario;
 
 	public int contagemCards = 0;
 
@@ -28,7 +29,9 @@ public class Memoria : MonoBehaviour {
 		panelParabensFinal.SetActive(false);
 		dificuldade = PlayerPrefs.GetInt("nivel", 3);
 		posicionarCardsDeEscolha();
-	
+		//temporariamente
+		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
+		usuario.nomeJogo = "Memoria";
 		contagemCards = 0;
 	}
 
@@ -197,6 +200,9 @@ public class Memoria : MonoBehaviour {
 		if (vitoria == true) {
 			vitoria = false;
 			Musica.instance.OnCongrats();
+			usuario.quantidadeAcertos = contagemCards;
+			usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
+			Login.conexao.addUsuarioJoga(usuario);
 			contagemCards++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");

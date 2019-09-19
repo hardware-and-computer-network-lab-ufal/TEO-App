@@ -29,6 +29,7 @@ public class PecaRoupa : MonoBehaviour {
         {
             transform.position = defaultPosition;
             Musica.instance.OnFail();
+            VestirManager.instance.usuario.quantidadeErros++;
         }
         else
         {
