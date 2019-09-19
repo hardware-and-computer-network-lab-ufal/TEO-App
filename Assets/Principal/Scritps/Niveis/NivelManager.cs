@@ -20,9 +20,6 @@ public class NivelManager : MonoBehaviour {
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-        } else
-        {
-            Destroy(gameObject);
         }
 
         if (SceneManager.GetActiveScene().buildIndex == 0) //verificando se esta na cena do menu p nao dar erro em outras cenas
@@ -30,7 +27,6 @@ public class NivelManager : MonoBehaviour {
             SceneManager.sceneLoaded += CarregaCena; //sempre que a cena abrir vai carregar esses objs
         }
 
-        instance = this;
     }
 
     private void Start()
@@ -66,6 +62,7 @@ public class NivelManager : MonoBehaviour {
                 if (Login.conexao.conectado == false){
                     TelaLogin();
                 } else {
+                    DesativaMenu();
                     TelaNivel();
                 }
             }
