@@ -17,6 +17,8 @@ public class OndeEsta : MonoBehaviour {
 	 public int questao;
 	public bool changeQuestion = true;
 
+	public UsuarioJoga usuario;
+
 	private Queue<int> bodyParts = new Queue<int>(3);
 
 	private void Awake() {
@@ -30,7 +32,9 @@ public class OndeEsta : MonoBehaviour {
 		contagemOndeEsta = 0;
 
 		totalOndeEsta = PlayerPrefs.GetInt("nivel", 3);
-		
+		//temporariamente
+		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
+		usuario.nomeJogo = "Onde Está?";
 	}
 
 	IEnumerator DesligaPanel () {
@@ -59,7 +63,9 @@ public class OndeEsta : MonoBehaviour {
 	public void OndeEstaCompleto() {
 		if (totalOndeEsta == contagemOndeEsta) {
 			Musica.instance.OnCongrats();
-			
+			usuario.quantidadeAcertos = contagemOndeEsta;
+			usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
+			Login.conexao.addUsuarioJoga(usuario);
 			contagemOndeEsta++;
 			panelParabens.SetActive(true);
             parabensAnim.Play("panel_parabens");

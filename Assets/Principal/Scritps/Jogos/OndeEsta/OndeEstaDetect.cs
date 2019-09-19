@@ -19,6 +19,7 @@ public class OndeEstaDetect : MonoBehaviour {
 			
 		} else if (hit.collider != null && hit.transform.gameObject.name != parte) {
 			Musica.instance.OnFail();
+			OndeEsta.instance.usuario.quantidadeErros++;
 		}
 
 	}
