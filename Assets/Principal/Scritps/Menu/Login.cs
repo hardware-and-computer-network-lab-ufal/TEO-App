@@ -17,7 +17,7 @@ public class Login : MonoBehaviour {
 		campo_login = GameObject.Find("campo_login");
 		campo_senha = GameObject.Find("campo_senha");
 		conferir = GameObject.Find("conferirLogin_btn").GetComponent<Button>();
-		naoLogar = GameObject.Find("naoLogar_btn").GetComponent<Button>();
+		naoLogar = GameObject.Find("naologar_label").GetComponent<Button>();
 		
 		
 		conferir.onClick.AddListener(conferirLogin);

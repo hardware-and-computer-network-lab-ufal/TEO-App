@@ -143,12 +143,12 @@ public class NivelManager : MonoBehaviour {
         DesativaMenu();
         loginTela.SetActive(true);
         loginAnim.Play("login");
-        GameObject.Find("naologar_label").GetComponent<Button>().onClick.AddListener(
-            () =>
-            {
-                TelaNivel();
-            }
-        );
+        // GameObject.Find("naologar_label").GetComponent<Button>().onClick.AddListener(
+        //     () =>
+        //     {
+        //         TelaNivel();
+        //     }
+        // );
         GameObject.Find("esqueci_btn").GetComponent<Button>().onClick.AddListener(
             () =>
             {
