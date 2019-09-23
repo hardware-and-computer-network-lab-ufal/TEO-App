@@ -229,7 +229,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1224171327}
+      objectReference: {fileID: 1224171325}
     - target: {fileID: 114361364276991280, guid: 7417a2306fcaeef42b19ff879be3f730,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 137336966}
   - component: {fileID: 137336965}
   m_Layer: 5
-  m_Name: panel_parabens_final
+  m_Name: panel_estatisticas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -972,7 +972,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1224171327}
+      - m_Target: {fileID: 1224171325}
         m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
@@ -2222,6 +2222,7 @@ GameObject:
   - component: {fileID: 1224171326}
   - component: {fileID: 1224171327}
   - component: {fileID: 1224171328}
+  - component: {fileID: 1224171325}
   m_Layer: 0
   m_Name: OndeEstaManager
   m_TagString: Untagged
@@ -2229,6 +2230,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1224171325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1224171324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f4d46e40f749efbb5a3890ae74750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelParabens: {fileID: 0}
+  panel_estatisticas: {fileID: 0}
+  popup_voltar: {fileID: 0}
 --- !u!4 &1224171326
 Transform:
   m_ObjectHideFlags: 0
@@ -2253,13 +2268,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef7449c844be4d5888e13a2909c3ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelParabens: {fileID: 0}
-  panelParabensFinal: {fileID: 0}
-  popup_voltar: {fileID: 0}
   contagemOndeEsta: 0
   totalOndeEsta: 0
   questao: 0
   changeQuestion: 1
+  usuario:
+    id: 0
+    cpf: 
+    nomeJogo: 
+    tempoJogo: 0
+    quantidadeAcertos: 0
+    quantidadeErros: 0
+    horario: 
 --- !u!114 &1224171328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2833,7 +2853,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 984958546}
         m_MethodName: Voltar
         m_Mode: 1
         m_Arguments:
