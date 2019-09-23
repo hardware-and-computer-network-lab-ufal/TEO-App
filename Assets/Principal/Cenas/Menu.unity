@@ -10308,7 +10308,7 @@ GameObject:
   - component: {fileID: 1754917713}
   - component: {fileID: 1754917712}
   m_Layer: 5
-  m_Name: esqueciAsenha_label
+  m_Name: esqueci_label
   m_TagString: idioma
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
