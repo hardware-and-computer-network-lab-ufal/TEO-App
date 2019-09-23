@@ -1429,7 +1429,7 @@ GameObject:
   - component: {fileID: 776640119}
   - component: {fileID: 776640118}
   m_Layer: 5
-  m_Name: panel_parabens_final
+  m_Name: panel_estatisticas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2556,6 +2556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314252133}
   - component: {fileID: 1314252132}
+  - component: {fileID: 1314252134}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2574,11 +2575,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bccb4fb129ec3448899628492592cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelParabens: {fileID: 1318156162}
-  panelEstatisticas: {fileID: 776640116}
-  popup_voltar: {fileID: 2027563025}
   rightClothe: 0
   clothesLentgh: 0
+  usuario:
+    id: 0
+    cpf: 
+    nomeJogo: 
+    tempoJogo: 0
+    quantidadeAcertos: 0
+    quantidadeErros: 0
+    horario: 
 --- !u!4 &1314252133
 Transform:
   m_ObjectHideFlags: 0
@@ -2592,6 +2598,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1314252134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314252131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f4d46e40f749efbb5a3890ae74750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelParabens: {fileID: 0}
+  panelParabensFinal: {fileID: 0}
+  popup_voltar: {fileID: 0}
 --- !u!1001 &1318156159
 Prefab:
   m_ObjectHideFlags: 0
@@ -3437,7 +3457,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1314252132}
+      - m_Target: {fileID: 1314252134}
         m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
