@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1224171327}
         m_MethodName: JogarNovamente
         m_Mode: 1
         m_Arguments:
@@ -2260,6 +2260,14 @@ MonoBehaviour:
   totalOndeEsta: 0
   questao: 0
   changeQuestion: 1
+  usuario:
+    id: 0
+    cpf: 
+    nomeJogo: 
+    tempoJogo: 0
+    quantidadeAcertos: 0
+    quantidadeErros: 0
+    horario: 
 --- !u!114 &1224171328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2558,7 +2566,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: be17f7b1ac0b06b4c8dd47125fe55b8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f9748f70975d5f4a9419ca7a2c2563a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2766,6 +2774,7 @@ GameObject:
   - component: {fileID: 1611888565}
   - component: {fileID: 1611888564}
   - component: {fileID: 1611888563}
+  - component: {fileID: 1611888566}
   m_Layer: 5
   m_Name: naoBtn
   m_TagString: Untagged
@@ -2833,7 +2842,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1611888566}
         m_MethodName: Voltar
         m_Mode: 1
         m_Arguments:
@@ -2882,6 +2891,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1611888561}
   m_CullTransparentMesh: 0
+--- !u!114 &1611888566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1611888561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78fe6b4a51e3d664daf281e8ea50fd58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1696006743
 GameObject:
   m_ObjectHideFlags: 0
