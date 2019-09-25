@@ -11,10 +11,6 @@ public class SimboNumero : MonoBehaviour {
     private int numSorteadoDez;
     [SerializeField]
     private int contagem;
-    public GameObject panelParabens;
-    public GameObject panelParabensFinal;
-    public GameObject popup_voltar;
-    private Animator parabensAnim, popup_voltar_anim;
 
 
     public GameObject numerosObjUnid,numerosObjDez;
@@ -41,8 +37,6 @@ public class SimboNumero : MonoBehaviour {
     void Start () {
         PlayerPrefs.DeleteKey("pontos");
 
-        StartCoroutine(DesligaPanel());
-
         numSorteadoUnid = Random.Range(1,10);
         numSorteadoDez = Random.Range(0,2);
         print("NUM SORTEADO:"+(numSorteadoDez*10+numSorteadoUnid));
@@ -55,44 +49,15 @@ public class SimboNumero : MonoBehaviour {
         
 		
 	}
-   
-	
-    IEnumerator DesligaPanel()
-    {
-        yield return new WaitForSeconds(0.001f);
-        parabensAnim = panelParabens.GetComponent<Animator>();
-        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
-        popup_voltar.SetActive(false);
-        panelParabens.SetActive(false);
-        panelParabensFinal.SetActive(false);
-    }
-
-    IEnumerator VoltaPanelParabens()
-    {
-        yield return new WaitForSeconds(5); 
-        parabensAnim.Play("panel_parabens_reverse");
-        yield return new WaitForSeconds(1);
-        panelParabensFinal.SetActive(true);
-        panelParabens.SetActive(false);
-    }
-    
-    public void JogarNovamente()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 
     public void VerificaContagem()
     {
         contagem = PegaPontos();
         if (this.contagem == (this.numSorteadoDez*10+this.numSorteadoUnid))
         {
-            panelParabens.SetActive(true);
-            parabensAnim.Play("panel_parabens");
-            Musica.instance.OnCongrats();
             usuario.quantidadeAcertos++;
             usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
-            Login.conexao.addUsuarioJoga(usuario);
-            StartCoroutine(VoltaPanelParabens());
+            TelaEstatisticas.instance.FaseCompleta(usuario);
         }
         else
         {
@@ -124,16 +89,5 @@ public class SimboNumero : MonoBehaviour {
     public int PegaPontos()
     {
         return PlayerPrefs.GetInt("pontos");
-    }
-
-    public void PausePopup()
-    {
-        popup_voltar.SetActive(true);
-        popup_voltar_anim.Play("popup_voltar");
-    }
-
-    public void Continue()
-    {
-        popup_voltar_anim.Play("popup_voltar_inverse");
     }
 }

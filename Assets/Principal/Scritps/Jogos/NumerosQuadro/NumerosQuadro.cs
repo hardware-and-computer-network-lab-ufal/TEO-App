@@ -10,11 +10,6 @@ using System.IO;
 public class NumerosQuadro : MonoBehaviour {
 
 	public static NumerosQuadro instance;
-	public GameObject panelParabens;
-	public GameObject panelEstatistica;
-	public GameObject popup_voltar;
-    public Animator parabensAnim;
-	private Animator popup_voltar_anim;
 
 	public static bool criarNovaFruta = true;
 
@@ -32,37 +27,12 @@ public class NumerosQuadro : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
-        panelEstatistica = GameObject.Find("panel_estatisticas");
         TEOManager.instance.MudaIdioma();
-        panelEstatistica.SetActive(false);
 		//temporariamente
 		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
 		usuario.nomeJogo = "Quanto É?";
 		sortearSoma();
 		somaTotal = 0;
-	}
-
-	IEnumerator DesligaPanel () {
-		yield return new WaitForSeconds(0.001f);
-		parabensAnim = panelParabens.GetComponent<Animator>();
-
-        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
-        popup_voltar.SetActive(false);
-        panelParabens.SetActive(false);
-        panelEstatistica.SetActive(false);
-	}
-
-	public IEnumerator VoltaPanelParabens() {
-		yield return new WaitForSeconds(5);
-		parabensAnim.Play("panel_parabens_reverse");
-		yield return new WaitForSeconds(1);
-        panelEstatistica.SetActive(true);
-		panelParabens.SetActive(false);
-	}
-
-	public void JogarNovamente() {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
 	}
 
 	public void sortearSoma() {
@@ -109,35 +79,11 @@ public class NumerosQuadro : MonoBehaviour {
 
 	void Start () {
 		fruta = GameObject.Find("fruta");
-		panelParabens = GameObject.Find("panel_parabens");
-		popup_voltar = GameObject.Find("popup_voltar");
         TEOManager.instance.MudaIdioma();
 
-
-        StartCoroutine(DesligaPanel());
 
 		posInicial = new Vector3(fruta.transform.position.x, fruta.transform.position.y, fruta.transform.position.z);
 		criarFruta();
 		fruta.transform.position = new Vector3(10.27f, -10.81f, 0);
 	}
-
-	public void PausePopup()
-    {
-        popup_voltar.SetActive(true);
-        popup_voltar_anim.Play("popup_voltar");
-    }
-
-    IEnumerator DesligaVoltarPanel()
-    {
-        yield return new WaitForSeconds(1);
-        popup_voltar.SetActive(false);
-    }
-
-    public void Continue()
-    {
-        popup_voltar_anim.Play("popup_voltar_inverse");
-        StartCoroutine(DesligaVoltarPanel());
-    }
-
-    
 }

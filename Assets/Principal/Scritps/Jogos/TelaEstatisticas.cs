@@ -16,10 +16,7 @@ public class TelaEstatisticas : MonoBehaviour {
     public void Awake() {
         instance = this;
         
-        panel_estatisticas = GameObject.Find("panel_estatisticas");
         panel_estatisticas.SetActive(false);
-        panelParabens = GameObject.Find("panel_parabens");
-        popup_voltar = GameObject.Find("popup_voltar");
     }
 
     public IEnumerator DesligaPanel () {
@@ -65,5 +62,10 @@ public class TelaEstatisticas : MonoBehaviour {
         parabensAnim.Play("panel_parabens");
         StartCoroutine(VoltaPanelParabens());
     }
+
+    public void JogarNovamente() {
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+	}
 
 }

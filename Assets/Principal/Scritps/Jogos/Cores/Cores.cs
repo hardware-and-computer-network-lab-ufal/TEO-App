@@ -41,11 +41,6 @@ public class Cores : MonoBehaviour {
 		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
 	}
 
-	public void JogarNovamente() {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-	}
-
 	public void CoresCompletas(int coresTotais) {
 		if (coresTotais == contagemCores) {
 			usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
