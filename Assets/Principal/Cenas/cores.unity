@@ -332,7 +332,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1224171327}
+      objectReference: {fileID: 1224171325}
     - target: {fileID: 114361364276991280, guid: 7417a2306fcaeef42b19ff879be3f730,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1461,8 +1461,8 @@ RectTransform:
   - {fileID: 984958550}
   - {fileID: 1097109839}
   - {fileID: 343083278}
-  - {fileID: 1208462726}
   - {fileID: 2020756015}
+  - {fileID: 1208462726}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1786,7 +1786,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1224171327}
+      - m_Target: {fileID: 1224171325}
         m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
@@ -2718,6 +2718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1224171326}
   - component: {fileID: 1224171327}
+  - component: {fileID: 1224171325}
   m_Layer: 0
   m_Name: CoresManager
   m_TagString: Untagged
@@ -2725,6 +2726,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1224171325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1224171324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f4d46e40f749efbb5a3890ae74750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelParabens: {fileID: 0}
+  panelParabensFinal: {fileID: 0}
+  popup_voltar: {fileID: 0}
 --- !u!4 &1224171326
 Transform:
   m_ObjectHideFlags: 0
@@ -2749,10 +2764,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f08c80838d064641ab848fe6ea60960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelParabens: {fileID: 0}
-  panelParabensFinal: {fileID: 0}
-  popup_voltar: {fileID: 0}
   contagemCores: 0
+  usuario:
+    id: 0
+    cpf: 
+    nomeJogo: 
+    tempoJogo: 0
+    quantidadeAcertos: 0
+    quantidadeErros: 0
+    horario: 
   destroyCircle: 0
 --- !u!1 &1275099879
 GameObject:
@@ -3875,7 +3895,7 @@ GameObject:
   - component: {fileID: 2020756017}
   - component: {fileID: 2020756016}
   m_Layer: 5
-  m_Name: panel_parabens_final
+  m_Name: panel_estatisticas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3898,7 +3918,7 @@ RectTransform:
   - {fileID: 1703408641}
   - {fileID: 1106740270}
   m_Father: {fileID: 494519303}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
