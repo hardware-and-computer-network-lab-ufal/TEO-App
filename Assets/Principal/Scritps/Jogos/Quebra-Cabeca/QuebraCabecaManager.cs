@@ -24,6 +24,7 @@ public class QuebraCabecaManager : MonoBehaviour {
     }
 
     void Start () {
+        StartCoroutine(TelaEstatisticas.instance.DesligaPanel());
 
         if (PlayerPrefs.GetInt("nivel") == 3)
         {

@@ -80,6 +80,7 @@ public class NumerosQuadro : MonoBehaviour {
 	void Start () {
 		fruta = GameObject.Find("fruta");
         TEOManager.instance.MudaIdioma();
+		StartCoroutine(TelaEstatisticas.instance.DesligaPanel());
 
 
 		posInicial = new Vector3(fruta.transform.position.x, fruta.transform.position.y, fruta.transform.position.z);
