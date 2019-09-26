@@ -59,6 +59,7 @@ public class TelaEstatisticas : MonoBehaviour {
         Musica.instance.OnCongrats();
         Login.conexao.addUsuarioJoga(usuario);
         panelParabens.SetActive(true);
+        resultadosDaPartida(usuario);
         parabensAnim.Play("panel_parabens");
         StartCoroutine(VoltaPanelParabens());
     }
@@ -67,5 +68,10 @@ public class TelaEstatisticas : MonoBehaviour {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
 	}
+
+    private void resultadosDaPartida(UsuarioJoga usuario) {
+        TMPro.TextMeshPro estatisticasObjeto = GameObject.Find("estatisticas").GetComponent<TMPro.TextMeshPro>();
+        estatisticasObjeto.text = "Acertos: " + usuario.quantidadeAcertos + "\nErros: " + usuario.quantidadeErros + "Tempo: " + usuario.tempoJogo;
+    }
 
 }

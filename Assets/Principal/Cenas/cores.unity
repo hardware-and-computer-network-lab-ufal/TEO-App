@@ -1134,10 +1134,15 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 223577272788604528, guid: 7000481d11e79415e853ce887d692a2d,
+    - target: {fileID: 114298817437483068, guid: 7000481d11e79415e853ce887d692a2d,
         type: 2}
-      propertyPath: m_SortingOrder
-      value: 32767
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114298817437483068, guid: 7000481d11e79415e853ce887d692a2d,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7000481d11e79415e853ce887d692a2d, type: 2}
