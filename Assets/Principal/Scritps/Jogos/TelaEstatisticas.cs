@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TelaEstatisticas : MonoBehaviour {
 	public static TelaEstatisticas instance;
@@ -70,8 +71,8 @@ public class TelaEstatisticas : MonoBehaviour {
 	}
 
     private void resultadosDaPartida(UsuarioJoga usuario) {
-        TMPro.TextMeshPro estatisticasObjeto = GameObject.Find("estatisticas").GetComponent<TMPro.TextMeshPro>();
-        estatisticasObjeto.text = "Acertos: " + usuario.quantidadeAcertos + "\nErros: " + usuario.quantidadeErros + "Tempo: " + usuario.tempoJogo;
+        TextMeshProUGUI estatisticasObjeto = panel_estatisticas.GetComponentInChildren<TextMeshProUGUI>();
+        estatisticasObjeto.text = "Acertos: " + usuario.quantidadeAcertos + "\nErros: " + usuario.quantidadeErros + "\nTempo: " + usuario.tempoJogo + " s";
     }
 
 }
