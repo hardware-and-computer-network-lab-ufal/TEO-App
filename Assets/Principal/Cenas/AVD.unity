@@ -303,7 +303,7 @@ RectTransform:
   m_Children:
   - {fileID: 836916746}
   m_Father: {fileID: 1358688058}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.72200006, y: 0.57188183}
   m_AnchorMax: {x: 0.895517, y: 0.8828819}
@@ -864,7 +864,7 @@ RectTransform:
   m_Children:
   - {fileID: 1053986611}
   m_Father: {fileID: 1358688058}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.101517014, y: 0.52017283}
   m_AnchorMax: {x: 0.2696548, y: 0.8167904}
@@ -2374,22 +2374,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4186884969746238, guid: 7000481d11e79415e853ce887d692a2d, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224819156559010856, guid: 7000481d11e79415e853ce887d692a2d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 224014640457114502, guid: 7000481d11e79415e853ce887d692a2d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224904842865530412, guid: 7000481d11e79415e853ce887d692a2d,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7000481d11e79415e853ce887d692a2d, type: 2}
@@ -2670,7 +2670,7 @@ RectTransform:
   m_Children:
   - {fileID: 728993073}
   m_Father: {fileID: 1358688058}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17772445, y: 0.07364555}
   m_AnchorMax: {x: 0.34762076, y: 0.37335446}
@@ -3067,7 +3067,7 @@ RectTransform:
   m_Children:
   - {fileID: 1055481971}
   m_Father: {fileID: 1358688058}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6751377, y: 0.08800001}
   m_AnchorMax: {x: 0.8583454, y: 0.40500003}
