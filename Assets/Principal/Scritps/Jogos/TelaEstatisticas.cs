@@ -16,7 +16,7 @@ public class TelaEstatisticas : MonoBehaviour {
 
     public void Awake() {
         instance = this;
-        
+        TEOManager.instance.MudaIdioma();
         panel_estatisticas.SetActive(false);
     }
 
@@ -72,7 +72,19 @@ public class TelaEstatisticas : MonoBehaviour {
 
     private void resultadosDaPartida(UsuarioJoga usuario) {
         TextMeshProUGUI estatisticasObjeto = panel_estatisticas.GetComponentInChildren<TextMeshProUGUI>();
-        estatisticasObjeto.text = "Acertos: " + usuario.quantidadeAcertos + "\nErros: " + usuario.quantidadeErros + "\nTempo: " + usuario.tempoJogo + " s";
+        string texto = "Null";
+
+        string idioma = PlayerPrefs.GetString("novoIdioma","NaoTem");
+        if (idioma.Equals("NaoTem") || idioma.Equals("portugues")) {
+            texto = "Acertos: " + usuario.quantidadeAcertos + "\nErros: " + usuario.quantidadeErros + "\nTempo: " + usuario.tempoJogo + " s";
+        } else if (idioma.Equals("espanhol")) {
+            texto = "Acertos: " + usuario.quantidadeAcertos + "\nErros: " + usuario.quantidadeErros + "\nTiempo: " + usuario.tempoJogo + " s";
+        } else if (idioma.Equals("ingles")) {
+            texto = "Rights: " + usuario.quantidadeAcertos + "\nWrongs: " + usuario.quantidadeErros + "\nTime: " + usuario.tempoJogo + " s";
+        }
+
+        estatisticasObjeto.text = texto;
+
     }
 
 }
