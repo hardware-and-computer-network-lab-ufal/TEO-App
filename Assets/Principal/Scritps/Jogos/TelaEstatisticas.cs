@@ -78,9 +78,9 @@ public class TelaEstatisticas : MonoBehaviour {
         if (idioma.Equals("NaoTem") || idioma.Equals("portugues")) {
             texto = "Acertos: " + usuario.quantidadeAcertos + "\nErros: " + usuario.quantidadeErros + "\nTempo: " + usuario.tempoJogo + " s";
         } else if (idioma.Equals("espanhol")) {
-            texto = "Acertos: " + usuario.quantidadeAcertos + "\nErros: " + usuario.quantidadeErros + "\nTiempo: " + usuario.tempoJogo + " s";
+            texto = "Golpes: " + usuario.quantidadeAcertos + "\nFallas: " + usuario.quantidadeErros + "\nTiempo: " + usuario.tempoJogo + " s";
         } else if (idioma.Equals("ingles")) {
-            texto = "Rights: " + usuario.quantidadeAcertos + "\nWrongs: " + usuario.quantidadeErros + "\nTime: " + usuario.tempoJogo + " s";
+            texto = "Hits: " + usuario.quantidadeAcertos + "\nMisses: " + usuario.quantidadeErros + "\nTime: " + usuario.tempoJogo + " s";
         }
 
         estatisticasObjeto.text = texto;
