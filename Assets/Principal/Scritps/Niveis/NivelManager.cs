@@ -91,6 +91,7 @@ public class NivelManager : MonoBehaviour {
     {
         StartCoroutine(DesligaLoginTela());
         nivelTela.SetActive(true);
+        TEOManager.instance.MudaIdioma();
         animacao.Play("tela_nivel");
     }
 
