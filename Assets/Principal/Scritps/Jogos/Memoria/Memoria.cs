@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Memoria : MonoBehaviour {
 	public static Memoria instance = null;
-	public GameObject panelParabens;
-	public GameObject panelParabensFinal;
-	public GameObject popup_voltar;
-    private Animator parabensAnim, popup_voltar_anim;
 	public UsuarioJoga usuario;
 
 	public int contagemCards = 0;
@@ -18,39 +14,20 @@ public class Memoria : MonoBehaviour {
 	public bool peekLiberado = false;
 
 	public Stack<GameObject> cartasMemorizar = new Stack<GameObject>();
+	private bool vitoria = false;
 
 	private void Awake() {
 		if (SceneManager.GetActiveScene().buildIndex == 8) {
 			if ( instance == null)
 				instance = this;
 		}
-		panelParabensFinal = GameObject.Find("panel_estatisticas");
         TEOManager.instance.MudaIdioma();
-		panelParabensFinal.SetActive(false);
 		dificuldade = PlayerPrefs.GetInt("nivel", 3);
 		posicionarCardsDeEscolha();
 		//temporariamente
 		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
 		usuario.nomeJogo = "Memoria";
 		contagemCards = 0;
-	}
-
-	IEnumerator DesligaPanel () {
-		yield return new WaitForSeconds(0.001f);
-		parabensAnim = panelParabens.GetComponent<Animator>();
-
-        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
-        popup_voltar.SetActive(false);
-        panelParabens.SetActive(false);
-		panelParabensFinal.SetActive(false);
-	}
-
-	IEnumerator VoltaPanelParabens() {
-		yield return new WaitForSeconds(5);
-		parabensAnim.Play("panel_parabens_reverse");
-		yield return new WaitForSeconds(1);
-		panelParabensFinal.SetActive(true);
-		panelParabens.SetActive(false);
 	}
 
 	public void JogarNovamente() {
@@ -182,7 +159,6 @@ public class Memoria : MonoBehaviour {
 	}
 
 	void faseCompleta() {
-		bool vitoria = false;
 		if (dificuldade == 1) {
 			if (contagemCards == 4){
 				vitoria = true;
@@ -199,45 +175,20 @@ public class Memoria : MonoBehaviour {
 
 		if (vitoria == true) {
 			vitoria = false;
-			Musica.instance.OnCongrats();
 			usuario.quantidadeAcertos = contagemCards;
 			usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
-			Login.conexao.addUsuarioJoga(usuario);
 			contagemCards++;
-			panelParabens.SetActive(true);
-            parabensAnim.Play("panel_parabens");
-            StartCoroutine(VoltaPanelParabens());
+			TelaEstatisticas.instance.FaseCompleta(usuario);
 		}
 	}
 
 	void Start() {
-		panelParabens = GameObject.Find("panel_parabens");
-		popup_voltar = GameObject.Find("popup_voltar");
         TEOManager.instance.MudaIdioma();
-        StartCoroutine(DesligaPanel());
+		StartCoroutine(TelaEstatisticas.instance.DesligaPanel());
 	}
 
 	void Update() {
 		faseCompleta();
 	}
-
-	public void PausePopup()
-    {
-        popup_voltar.SetActive(true);
-        popup_voltar_anim.Play("popup_voltar");
-    }
-
-    IEnumerator DesligaVoltarPanel()
-    {
-        yield return new WaitForSeconds(1);
-        popup_voltar.SetActive(false);
-    }
-
-
-    public void Continue()
-    {
-        popup_voltar_anim.Play("popup_voltar_inverse");
-        StartCoroutine(DesligaVoltarPanel());
-    }
 
 }

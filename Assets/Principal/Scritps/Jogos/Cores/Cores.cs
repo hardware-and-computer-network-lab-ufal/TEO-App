@@ -10,12 +10,7 @@ using System.Collections.Generic;
 public class Cores : MonoBehaviour {
 
 	public static Cores instance;
-	public GameObject panelParabens;
-	public GameObject panelParabensFinal;
-    public GameObject popup_voltar;
-    private Animator parabensAnim, popup_voltar_anim;
 	public int contagemCores = 0;
-
 	private Queue<int> unicos = new Queue<int>();
 	private int dificuldade;
 
@@ -39,49 +34,19 @@ public class Cores : MonoBehaviour {
 			if ( instance == null)
 				instance = this;
 		}
-		panelParabensFinal = GameObject.Find("panel_parabens_final");
+		
         TEOManager.instance.MudaIdioma();
-		panelParabensFinal.SetActive(false);
 		contagemCores = 0;
 		//temporariamente
 		usuario.cpf = PlayerPrefs.GetString("cpf", "12345678901");
 	}
 
-	IEnumerator DesligaPanel () {
-		yield return new WaitForSeconds(0.001f);
-		parabensAnim = panelParabens.GetComponent<Animator>();
-
-        popup_voltar_anim = popup_voltar.GetComponent<Animator>();
-        popup_voltar.SetActive(false);
-        panelParabens.SetActive(false);
-		panelParabensFinal.SetActive(false);
-	}
-
-	IEnumerator VoltaPanelParabens() {
-		yield return new WaitForSeconds(5);
-		parabensAnim.Play("panel_parabens_reverse");
-		yield return new WaitForSeconds(1);
-		panelParabensFinal.SetActive(true);
-		panelParabens.SetActive(false);
-	}
-
-	public void JogarNovamente() {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-	}
-
 	public void CoresCompletas(int coresTotais) {
 		if (coresTotais == contagemCores) {
-			Musica.instance.OnCongrats();
 			usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
-			// Login.conexao.instance.addUsuarioJoga(usuario);
 			usuario.quantidadeAcertos = contagemCores;
-			Login.conexao.addUsuarioJoga(usuario);
-
 			contagemCores++;
-			panelParabens.SetActive(true);
-            parabensAnim.Play("panel_parabens");
-            StartCoroutine(VoltaPanelParabens());
+			TelaEstatisticas.instance.FaseCompleta(usuario);
 		}
 	}
 	public void sortearCores(){
@@ -186,11 +151,8 @@ public class Cores : MonoBehaviour {
 	}
 
 	void Start () {
-		panelParabens = GameObject.Find("panel_parabens");
-        popup_voltar = GameObject.Find("popup_voltar");
         TEOManager.instance.MudaIdioma();
-
-		StartCoroutine(DesligaPanel());
+		StartCoroutine(TelaEstatisticas.instance.DesligaPanel());
 		dificuldade = PlayerPrefs.GetInt("nivel");
 		
 		sortearCores();
@@ -207,22 +169,4 @@ public class Cores : MonoBehaviour {
 		else
 			CoresCompletas(6);
 	}
-
-    public void PausePopup()
-    {
-        popup_voltar.SetActive(true);
-        popup_voltar_anim.Play("popup_voltar");
-    }
-
-    IEnumerator DesligaVoltarPanel()
-    {
-        yield return new WaitForSeconds(1);
-        popup_voltar.SetActive(false);
-    }
-
-    public void Continue()
-    {
-        popup_voltar_anim.Play("popup_voltar_inverse");
-        StartCoroutine(DesligaVoltarPanel());
-    }
 }

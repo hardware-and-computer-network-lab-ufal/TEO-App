@@ -10,10 +10,7 @@ public class NumerosQuadroConferirBtn : MonoBehaviour {
 			Musica.instance.OnCongrats();
 			NumerosQuadro.instance.usuario.quantidadeAcertos++;
 			NumerosQuadro.instance.usuario.tempoJogo = (int)Time.timeSinceLevelLoad;
-			Login.conexao.addUsuarioJoga(NumerosQuadro.instance.usuario);
-			NumerosQuadro.instance.panelParabens.SetActive(true);
-            NumerosQuadro.instance.parabensAnim.Play("panel_parabens");
-            StartCoroutine(NumerosQuadro.instance.VoltaPanelParabens());
+			TelaEstatisticas.instance.FaseCompleta(NumerosQuadro.instance.usuario);
 		} else {
 			Musica.instance.OnFail();
 			NumerosQuadro.instance.usuario.quantidadeErros++;

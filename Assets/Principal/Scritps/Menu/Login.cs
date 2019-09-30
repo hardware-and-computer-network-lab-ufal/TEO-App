@@ -20,23 +20,17 @@ public class Login : MonoBehaviour {
 		naoLogar = GameObject.Find("naologar_label").GetComponent<Button>();
 		
 		
-		conferir.onClick.AddListener(conferirLogin);
+		conferir.onClick.AddListener(delegate{conferirLogin();});
 
-		naoLogar.onClick.AddListener(
-			() => {
-				try{
-					conexao = new Conexao("naoLogar", "naoLogar");
-				} catch (System.Exception e) {
-					print(e.Message);
-				}
-				NivelManager.instance.TelaNivel();
-			}
-		);
+		naoLogar.onClick.AddListener(delegate{conferirLogin("naoLogar", "naoLogar");});
 	}
 
-	public void conferirLogin() {
-		string username = campo_login.GetComponent<InputField>().text;
-		string password = campo_senha.GetComponent<InputField>().text;
+	public void conferirLogin(string username = null, string password = null) {
+		if(username == null || password == null) {
+			username = campo_login.GetComponent<InputField>().text;
+			password = campo_senha.GetComponent<InputField>().text;
+		}
+		
 
 		try {
 			conexao = new Conexao(username, password);
