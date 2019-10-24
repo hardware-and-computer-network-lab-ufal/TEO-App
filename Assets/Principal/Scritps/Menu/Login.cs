@@ -23,6 +23,9 @@ public class Login : MonoBehaviour {
 		conferir.onClick.AddListener(delegate{conferirLogin();});
 
 		naoLogar.onClick.AddListener(delegate{conferirLogin("naoLogar", "naoLogar");});
+		
+		//Avançar de Login para Niveis, release v1.0
+		conferirLogin("naoLogar", "naoLogar");
 	}
 
 	public void conferirLogin(string username = null, string password = null) {
