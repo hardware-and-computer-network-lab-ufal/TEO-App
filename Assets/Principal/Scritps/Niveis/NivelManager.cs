@@ -58,17 +58,21 @@ public class NivelManager : MonoBehaviour {
         //Botao play
         playBtn = GameObject.Find("PlayButton").GetComponent<Button>();
         playBtn.onClick.AddListener(() => {
-            try {
-                if (Login.conexao.conectado == false){
-                    TelaLogin();
-                } else {
-                    DesativaMenu();
-                    TelaNivel();
-                }
-            }
-            catch (System.Exception) {
-                TelaLogin();
-            }
+            // try {
+            //     if (Login.conexao.conectado == false){
+            //         TelaLogin();
+            //     } else {
+            //         DesativaMenu();
+            //         TelaNivel();
+            //     }
+            // }
+            // catch (System.Exception) {
+            //     TelaLogin();
+            // }
+            
+            //Avançar de Login para Niveis, release v1.0
+            TelaLogin();
+            TelaNivel();
             TEOManager.instance.MudaIdioma();
         });
     }
