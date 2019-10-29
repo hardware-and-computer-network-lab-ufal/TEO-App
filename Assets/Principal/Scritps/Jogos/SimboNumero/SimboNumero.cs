@@ -35,6 +35,8 @@ public class SimboNumero : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        TEOManager.instance.MudaIdioma();
+		StartCoroutine(TelaEstatisticas.instance.DesligaPanel());
         PlayerPrefs.DeleteKey("pontos");
 
         numSorteadoUnid = Random.Range(1,10);
