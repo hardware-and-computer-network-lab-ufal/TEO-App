@@ -140,13 +140,19 @@ public class Memoria : MonoBehaviour {
 		
 		float zChange = 95f;
 		int ordem = 10; // altera o sorting layer order para cada card
-
+		
+		GameObject primeiraCard = GameObject.Find("costas");
 		foreach (int indice in novosUnicos) {
 			escolha[indice].transform.position = new Vector3(5f, -2.4f, zChange);
 			zChange+=1f;
 			escolha[indice].GetComponent<SpriteRenderer>().sortingOrder = ordem++;
 			cartasMemorizar.Push(escolha[indice]);
 		}
+		primeiraCard.transform.position = new Vector3(5f, -2.4f,zChange);
+		primeiraCard.GetComponent<SpriteRenderer>().sortingOrder = ordem++;
+		zChange+=1;
+		cartasMemorizar.Push(primeiraCard);
+
 		escolha = null;
 	}
 
@@ -156,6 +162,7 @@ public class Memoria : MonoBehaviour {
 			item.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Jogos/Memoria/costas");
 		}
 		peekLiberado = true;
+		Destroy(cartasMemorizar.Pop());
 	}
 
 	void faseCompleta() {
