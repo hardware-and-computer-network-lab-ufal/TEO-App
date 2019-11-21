@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Principal/Cenas/AVD.unity
+- path: Assets/Principal/Cenas/Menu.unity
   isLoaded: 1
   isActive: 1

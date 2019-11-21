@@ -24,6 +24,9 @@ public class DefIdioma : MonoBehaviour {
         francesBtn.onClick.AddListener(() => IdiomaButton(francesBtn));
         italianoBtn.onClick.AddListener(() => IdiomaButton(italianoBtn));
 
+        francesBtn.interactable = false;
+        italianoBtn.interactable = false;
+
         if (PlayerPrefs.HasKey("novoIdioma"))
         {
             string novoIdioma = PlayerPrefs.GetString("novoIdioma");
